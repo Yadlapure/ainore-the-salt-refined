@@ -8,6 +8,7 @@ import heroSalt from "@/assets/hero-salt.jpg";
 import factory from "@/assets/factory.jpg";
 import product from "@/assets/product.jpg";
 import saltPans from "@/assets/salt-pans.jpg";
+import logo from "@/assets/ainore-logo.jpeg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,13 +17,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "AINORE is a precision manufacturing house. Our debut product — a premium salt brand — is the first of many categories engineered for the world.",
+          "AINORE is a precision manufacturing house engineering premium consumer and industrial products for the world.",
       },
       { property: "og:title", content: "AINORE — Engineered Purity" },
       {
         property: "og:description",
         content:
-          "A manufacturing powerhouse. Premium salt is just the beginning.",
+          "A manufacturing powerhouse. Our debut is just the beginning.",
       },
     ],
   }),
@@ -48,12 +49,12 @@ function Hero() {
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <img
           src={heroSalt}
-          alt="Cinematic cascade of pure salt crystals"
-          className="h-full w-full object-cover opacity-70"
+          alt="Cinematic texture"
+          className="h-full w-full object-cover opacity-60"
           width={1920}
           height={1280}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background" />
         <div className="absolute inset-0 bg-aurora" />
       </motion.div>
 
@@ -63,6 +64,21 @@ function Hero() {
         style={{ opacity }}
         className="relative z-10 mx-auto max-w-5xl px-6 text-center"
       >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mb-8 flex justify-center"
+        >
+          <img
+            src={logo}
+            alt="AINORE"
+            className="h-24 w-24 object-contain mix-blend-screen drop-shadow-[0_0_30px_rgba(255,255,255,0.15)] md:h-32 md:w-32"
+            width={256}
+            height={256}
+          />
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,7 +93,7 @@ function Hero() {
           initial={{ opacity: 0, y: 40, filter: "blur(20px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-5xl font-light leading-[0.95] tracking-tight text-balance md:text-7xl lg:text-[8rem]"
+          className="font-display text-5xl font-light leading-[0.95] tracking-tight text-balance md:text-7xl lg:text-[7rem]"
         >
           We don't make
           <br />
@@ -90,9 +106,9 @@ function Hero() {
           transition={{ duration: 1, delay: 0.7 }}
           className="mx-auto mt-8 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground md:text-lg"
         >
-          AINORE is a precision manufacturing house. Our debut — a premium salt
-          brand — is engineered with the same discipline that will power every
-          category we touch next.
+          AINORE is a precision manufacturing house engineered for whatever
+          comes next. Our debut product carries the same discipline that will
+          power every category we build.
         </motion.p>
 
         <motion.div
@@ -135,7 +151,7 @@ function Hero() {
 function Marquee() {
   const items = [
     "PRECISION ENGINEERED",
-    "ISO 22000 CERTIFIED",
+    "FSSAI 11226334000424",
     "BUILT TO EXPORT",
     "MANUFACTURING HOUSE",
     "PREMIUM GRADE",
@@ -181,13 +197,13 @@ function Manifesto() {
             <p>
               AINORE was built as a manufacturing platform — not a single
               product. Our floors are designed for category-agnostic precision:
-              food, materials, formulations, finishing. Whatever we choose to
-              make next, the standard is set on day one.
+              consumables, materials, formulations, finishing. Whatever we
+              choose to make next, the standard is set on day one.
             </p>
             <p>
-              We started with salt because salt forgives nothing. Every crystal
-              is a test of source, environment, process and packaging. If we
-              can ship the cleanest salt in the room, we can ship anything.
+              We chose a debut that forgives nothing. Every unit is a test of
+              source, environment, process and packaging. If we can ship the
+              cleanest product in the room, we can ship anything.
             </p>
           </div>
         </Reveal>
@@ -210,21 +226,21 @@ function Product() {
               02 — Debut Product
             </p>
             <h2 className="font-display text-5xl font-light leading-[1] tracking-tight md:text-7xl">
-              Salt,
+              The first,
               <br />
               <span className="italic text-foil">redrawn.</span>
             </h2>
             <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              A signature crystal harvested under controlled evaporation, dried
-              in laminar airflow, and sealed in a vessel built to outlast its
-              contents. Restaurant-grade. Export-ready. Quietly perfect.
+              Produced under controlled environment, finished in laminar
+              airflow, and sealed in a vessel built to outlast its contents.
+              Retail-grade. Export-ready. Quietly perfect.
             </p>
 
             <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
               {[
                 { k: "99.8%", v: "Purity" },
                 { k: "0", v: "Additives" },
-                { k: "ISO", v: "Certified" },
+                { k: "FSSAI", v: "Certified" },
               ].map((s) => (
                 <div key={s.v}>
                   <dt className="font-display text-3xl text-foreground md:text-4xl">
@@ -264,7 +280,7 @@ function Product() {
             <div className="relative h-full w-full overflow-hidden rounded-3xl border border-border shadow-deep">
               <img
                 src={product}
-                alt="AINORE premium salt vessel in matte black"
+                alt="AINORE debut product in matte black vessel"
                 className="h-full w-full object-cover"
                 loading="lazy"
                 width={1280}
@@ -275,7 +291,7 @@ function Product() {
                 <div>
                   <p className="font-display text-2xl text-foreground">N°01</p>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                    Signature Crystal
+                    The Debut
                   </p>
                 </div>
                 <span className="rounded-full border border-accent/40 bg-glass px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-accent">
@@ -369,9 +385,9 @@ function Manufacturing() {
 
 function Roadmap() {
   const items = [
-    { tag: "Live", title: "Premium Salt", note: "Signature crystal, retail + HORECA" },
-    { tag: "2026", title: "Specialty Minerals", note: "Pink, smoked, infused variants" },
-    { tag: "2026", title: "Food Ingredients", note: "Co-pack & private label" },
+    { tag: "Live", title: "Debut Product", note: "Retail + HORECA, export-ready" },
+    { tag: "2026", title: "Specialty Line", note: "Premium variants and editions" },
+    { tag: "2026", title: "Co-pack & Private Label", note: "Built for brand partners" },
     { tag: "Beyond", title: "Adjacent Verticals", note: "Materials · Personal care · Industrial" },
   ];
   return (
@@ -384,7 +400,7 @@ function Roadmap() {
         </Reveal>
         <Reveal delay={1}>
           <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl">
-            Salt is the first chapter.
+            The first chapter is shipping.
             <br />
             <span className="text-muted-foreground">
               The book is the manufacturing house.
@@ -436,7 +452,7 @@ function Sustainability() {
           <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-border shadow-deep">
             <img
               src={saltPans}
-              alt="Aerial view of geometric salt evaporation pans at sunrise"
+              alt="Aerial view of geometric production facility at sunrise"
               className="h-full w-full object-cover"
               loading="lazy"
               width={1920}
@@ -459,15 +475,15 @@ function Sustainability() {
           </Reveal>
           <Reveal delay={2}>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              Solar evaporation. Recyclable packaging. Closed-loop water on
-              every line. The same restraint that defines our product defines
-              its footprint.
+              Solar-assisted processing. Recyclable packaging. Closed-loop
+              water on every line. The same restraint that defines our product
+              defines its footprint.
             </p>
           </Reveal>
           <Reveal delay={3}>
             <ul className="mt-8 space-y-3 text-sm">
               {[
-                "100% solar-driven evaporation",
+                "Solar-assisted production",
                 "Zero plastic in primary packaging",
                 "Closed-loop process water",
                 "Carbon-mapped supply chain",
@@ -534,6 +550,41 @@ function Contact() {
             </button>
           </form>
         </Reveal>
+        <Reveal delay={4}>
+          <div className="mx-auto mt-16 grid max-w-4xl gap-8 border-t border-border pt-12 text-left md:grid-cols-3">
+            <div>
+              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">
+                Email
+              </p>
+              <a
+                href="mailto:granityinternational@gmail.com"
+                className="text-sm text-foreground hover:text-accent"
+              >
+                granityinternational@gmail.com
+              </a>
+            </div>
+            <div>
+              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">
+                FSSAI
+              </p>
+              <p className="font-display text-sm tracking-[0.15em] text-foreground">
+                11226334000424
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">
+                Registered Office
+              </p>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Grainity International Pvt. Ltd.
+                <br />
+                #89 Sy. No 6/1, Nyannapanahally Village,
+                <br />
+                Hulimavu, Bengaluru — 560076
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -544,10 +595,26 @@ function Footer() {
     <footer className="border-t border-border px-6 py-16">
       <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <p className="font-display text-3xl tracking-[0.3em]">AINORE</p>
+          <div className="flex items-center gap-3">
+            <img
+              src={logo}
+              alt="AINORE"
+              className="h-10 w-10 object-contain mix-blend-screen"
+              width={80}
+              height={80}
+            />
+            <p className="font-display text-3xl tracking-[0.3em]">AINORE</p>
+          </div>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            A manufacturing house engineered for whatever comes next. Premium
-            salt is our debut — not our limit.
+            A manufacturing house engineered for whatever comes next. Our debut
+            is shipping — and it's only the beginning.
+          </p>
+          <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
+            Grainity International Pvt. Ltd.
+            <br />
+            #89 Sy. No 6/1, Nyannapanahally Village, Hulimavu,
+            <br />
+            Bengaluru — 560076, India
           </p>
         </div>
         <div>
@@ -555,7 +622,7 @@ function Footer() {
             Explore
           </p>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="#product" className="hover:text-foreground">Product</a></li>
+            <li><a href="#product" className="hover:text-foreground">Debut</a></li>
             <li><a href="#manufacturing" className="hover:text-foreground">Manufacturing</a></li>
             <li><a href="#sustainability" className="hover:text-foreground">Sustainability</a></li>
           </ul>
@@ -565,13 +632,21 @@ function Footer() {
             Contact
           </p>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>hello@ainore.com</li>
+            <li>
+              <a
+                href="mailto:granityinternational@gmail.com"
+                className="hover:text-foreground"
+              >
+                granityinternational@gmail.com
+              </a>
+            </li>
             <li>Export · Wholesale · Co-pack</li>
+            <li className="pt-2 text-xs">FSSAI: 11226334000424</li>
           </ul>
         </div>
       </div>
       <div className="mx-auto mt-16 flex max-w-7xl flex-col items-start justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
-        <p>© {new Date().getFullYear()} AINORE Manufacturing. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Grainity International Pvt. Ltd. All rights reserved.</p>
         <p className="font-display tracking-[0.3em]">ENGINEERED · PURE · BUILT TO LAST</p>
       </div>
     </footer>

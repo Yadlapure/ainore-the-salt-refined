@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import logo from "@/assets/ainore-logo.jpeg";
 
 const links = [
-  { href: "#product", label: "Product" },
+  { href: "#product", label: "Debut" },
   { href: "#craft", label: "Craft" },
   { href: "#manufacturing", label: "Manufacturing" },
   { href: "#sustainability", label: "Sustainability" },
@@ -30,8 +31,15 @@ export function Nav() {
             : ""
         }`}
       >
-        <a href="#top" className="flex items-center gap-2">
-          <span className="font-display text-2xl tracking-[0.3em] text-foreground">
+        <a href="#top" className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt="AINORE"
+            className="h-9 w-9 object-contain mix-blend-screen"
+            width={72}
+            height={72}
+          />
+          <span className="font-display text-xl tracking-[0.3em] text-foreground">
             AINORE
           </span>
         </a>
