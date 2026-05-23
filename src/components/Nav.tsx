@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "@/assets/ainore-logo.jpeg";
+import logo from "@/assets/ainore-logo-clean.png";
 
 const links = [
   { href: "#product", label: "Debut" },
@@ -35,7 +35,7 @@ export function Nav() {
           <img
             src={logo}
             alt="AINORE"
-            className="h-9 w-9 object-contain mix-blend-screen"
+            className="h-9 w-9 object-contain"
             width={72}
             height={72}
           />
