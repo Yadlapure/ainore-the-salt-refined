@@ -4,11 +4,11 @@ import { useRef } from "react";
 import { Nav } from "@/components/Nav";
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
-import heroSalt from "@/assets/hero-salt.jpg";
-import factory from "@/assets/factory.jpg";
-import product from "@/assets/product.jpg";
-import saltPans from "@/assets/salt-pans.jpg";
-import logo from "@/assets/ainore-logo.jpeg";
+import heroSalt from "@/assets/hero-abstract.jpg";
+import factory from "@/assets/factory-new.jpg";
+import product from "@/assets/product-new.jpg";
+import saltPans from "@/assets/campus-aerial.jpg";
+import logo from "@/assets/ainore-logo-clean.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -73,9 +73,9 @@ function Hero() {
           <img
             src={logo}
             alt="AINORE"
-            className="h-24 w-24 object-contain mix-blend-screen drop-shadow-[0_0_30px_rgba(255,255,255,0.15)] md:h-32 md:w-32"
-            width={256}
-            height={256}
+            className="h-28 w-28 object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.25)] md:h-40 md:w-40"
+            width={320}
+            height={320}
           />
         </motion.div>
 
@@ -599,7 +599,7 @@ function Footer() {
             <img
               src={logo}
               alt="AINORE"
-              className="h-10 w-10 object-contain mix-blend-screen"
+              className="h-10 w-10 object-contain"
               width={80}
               height={80}
             />
