@@ -178,12 +178,12 @@ function Manifesto() {
   return (
     <section id="craft" className="relative px-6 py-32 md:py-48">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
+        <Reveal direction="left" distance={200}>
           <p className="mb-12 text-[10px] uppercase tracking-[0.4em] text-accent">
             01 — The Manifesto
           </p>
         </Reveal>
-        <Reveal delay={1}>
+        <Reveal direction="right" distance={300} delay={1}>
           <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl lg:text-7xl">
             A factory is only as honest as
             <span className="text-muted-foreground"> the first thing it ships.</span>
@@ -192,25 +192,28 @@ function Manifesto() {
             <span className="italic text-foil">pure.</span>
           </h2>
         </Reveal>
-        <Reveal delay={2}>
-          <div className="mt-16 grid gap-12 text-base leading-relaxed text-muted-foreground md:grid-cols-2 md:text-lg">
+        <div className="mt-16 grid gap-12 text-base leading-relaxed text-muted-foreground md:grid-cols-2 md:text-lg">
+          <Reveal direction="left" distance={250} delay={2}>
             <p>
               AINORE was built as a manufacturing platform — not a single
               product. Our floors are designed for category-agnostic precision:
               consumables, materials, formulations, finishing. Whatever we
               choose to make next, the standard is set on day one.
             </p>
+          </Reveal>
+          <Reveal direction="right" distance={250} delay={3}>
             <p>
               We chose a debut that forgives nothing. Every unit is a test of
               source, environment, process and packaging. If we can ship the
               cleanest product in the room, we can ship anything.
             </p>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
 }
+
 
 function Product() {
   return (
@@ -220,7 +223,7 @@ function Product() {
     >
       <div className="absolute inset-0 bg-aurora opacity-40" />
       <div className="relative mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:items-center">
-        <Reveal>
+        <Reveal direction="left" distance={300}>
           <div>
             <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
               02 — Debut Product
@@ -241,15 +244,17 @@ function Product() {
                 { k: "99.8%", v: "Purity" },
                 { k: "0", v: "Additives" },
                 { k: "FSSAI", v: "Certified" },
-              ].map((s) => (
-                <div key={s.v}>
-                  <dt className="font-display text-3xl text-foreground md:text-4xl">
-                    {s.k}
-                  </dt>
-                  <dd className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                    {s.v}
-                  </dd>
-                </div>
+              ].map((s, i) => (
+                <Reveal key={s.v} direction="up" distance={60} delay={i + 1}>
+                  <div>
+                    <dt className="font-display text-3xl text-foreground md:text-4xl">
+                      {s.k}
+                    </dt>
+                    <dd className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                      {s.v}
+                    </dd>
+                  </div>
+                </Reveal>
               ))}
             </dl>
 
@@ -270,7 +275,7 @@ function Product() {
           </div>
         </Reveal>
 
-        <Reveal delay={2}>
+        <Reveal direction="right" distance={400} delay={2}>
           <motion.div
             whileHover={{ scale: 1.03, rotate: -1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -301,6 +306,7 @@ function Product() {
             </div>
           </motion.div>
         </Reveal>
+
       </div>
     </section>
   );
@@ -332,18 +338,18 @@ function Manufacturing() {
   return (
     <section id="manufacturing" className="relative px-6 py-32 md:py-48">
       <div className="mx-auto max-w-7xl">
-        <Reveal>
+        <Reveal direction="left" distance={200}>
           <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
             03 — Capability
           </p>
         </Reveal>
-        <Reveal delay={1}>
+        <Reveal direction="left" distance={350} delay={1}>
           <h2 className="max-w-4xl font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl">
             The platform behind the product.
           </h2>
         </Reveal>
 
-        <Reveal delay={2}>
+        <Reveal direction="scale" delay={2}>
           <div className="relative mt-16 overflow-hidden rounded-3xl border border-border shadow-deep">
             <img
               src={factory}
@@ -364,7 +370,12 @@ function Manufacturing() {
 
         <div className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
           {pillars.map((p, i) => (
-            <Reveal key={p.t} delay={i}>
+            <Reveal
+              key={p.t}
+              direction={i % 2 === 0 ? "left" : "right"}
+              distance={250}
+              delay={i}
+            >
               <div className="group h-full bg-background p-8 transition-colors hover:bg-card md:p-10">
                 <p className="font-display text-sm text-accent">{p.n}</p>
                 <h3 className="mt-6 font-display text-2xl text-foreground">
@@ -378,6 +389,7 @@ function Manufacturing() {
             </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   );
@@ -393,12 +405,12 @@ function Roadmap() {
   return (
     <section className="relative px-6 py-32 md:py-48">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
+        <Reveal direction="right" distance={200}>
           <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
             04 — Roadmap
           </p>
         </Reveal>
-        <Reveal delay={1}>
+        <Reveal direction="right" distance={350} delay={1}>
           <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl">
             The first chapter is shipping.
             <br />
@@ -410,7 +422,12 @@ function Roadmap() {
 
         <div className="mt-20 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
           {items.map((it, i) => (
-            <Reveal key={it.title} delay={i}>
+            <Reveal
+              key={it.title}
+              direction={i % 2 === 0 ? "left" : "right"}
+              distance={400}
+              delay={i}
+            >
               <div className="group flex flex-col gap-4 bg-background p-8 transition-all hover:bg-card md:flex-row md:items-center md:p-10">
                 <div className="w-32 shrink-0">
                   <span
@@ -436,6 +453,7 @@ function Roadmap() {
             </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   );
@@ -448,7 +466,7 @@ function Sustainability() {
       className="relative overflow-hidden px-6 py-32 md:py-48"
     >
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-5 lg:items-center">
-        <Reveal delay={1} className="lg:col-span-3">
+        <Reveal direction="left" distance={400} delay={1} className="lg:col-span-3">
           <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-border shadow-deep">
             <img
               src={saltPans}
@@ -463,41 +481,39 @@ function Sustainability() {
         </Reveal>
 
         <div className="lg:col-span-2">
-          <Reveal>
+          <Reveal direction="right" distance={300}>
             <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
               05 — Sustainability
             </p>
           </Reveal>
-          <Reveal delay={1}>
+          <Reveal direction="right" distance={300} delay={1}>
             <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-5xl">
               Engineered with the planet in the spec sheet.
             </h2>
           </Reveal>
-          <Reveal delay={2}>
+          <Reveal direction="right" distance={300} delay={2}>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               Solar-assisted processing. Recyclable packaging. Closed-loop
               water on every line. The same restraint that defines our product
               defines its footprint.
             </p>
           </Reveal>
-          <Reveal delay={3}>
-            <ul className="mt-8 space-y-3 text-sm">
-              {[
-                "Solar-assisted production",
-                "Zero plastic in primary packaging",
-                "Closed-loop process water",
-                "Carbon-mapped supply chain",
-              ].map((t) => (
-                <li
-                  key={t}
-                  className="flex items-center gap-3 border-b border-border pb-3 text-muted-foreground"
-                >
+          <ul className="mt-8 space-y-3 text-sm">
+            {[
+              "Solar-assisted production",
+              "Zero plastic in primary packaging",
+              "Closed-loop process water",
+              "Carbon-mapped supply chain",
+            ].map((t, i) => (
+              <Reveal key={t} direction="right" distance={200} delay={i + 3}>
+                <li className="flex items-center gap-3 border-b border-border pb-3 text-muted-foreground">
                   <span className="h-1 w-1 rounded-full bg-accent" /> {t}
                 </li>
-              ))}
-            </ul>
-          </Reveal>
+              </Reveal>
+            ))}
+          </ul>
         </div>
+
       </div>
     </section>
   );
@@ -512,18 +528,19 @@ function Contact() {
       <div className="absolute inset-0 bg-aurora opacity-60" />
       <Particles count={30} />
       <div className="relative mx-auto max-w-5xl text-center">
-        <Reveal>
+        <Reveal direction="down" distance={120}>
           <p className="mb-8 text-[10px] uppercase tracking-[0.4em] text-accent">
             06 — Partner With Us
           </p>
         </Reveal>
-        <Reveal delay={1}>
+        <Reveal direction="scale" delay={1}>
           <h2 className="font-display text-5xl font-light leading-[0.95] tracking-tight text-balance md:text-8xl">
             Build the next
             <br />
             <span className="italic text-foil">category</span> with us.
           </h2>
         </Reveal>
+
         <Reveal delay={2}>
           <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
             Distributors, co-packers, retailers, and product founders — if you
