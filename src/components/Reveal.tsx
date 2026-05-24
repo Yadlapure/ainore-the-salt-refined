@@ -41,7 +41,7 @@ export function Reveal({
   as: Tag = "div",
   direction = "up",
   distance = 120,
-  once = true,
+  once = false,
 }: {
   children: ReactNode;
   delay?: number;
