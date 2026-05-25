@@ -436,7 +436,7 @@ function Roadmap() {
               delay={i}
             >
               <div className="group flex flex-col gap-4 bg-background p-8 transition-all hover:bg-card md:flex-row md:items-center md:p-10">
-                <div className="w-32 shrink-0">
+                <div className="shrink-0 md:w-32">
                   <span
                     className={`inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] ${
                       it.tag === "Live"
