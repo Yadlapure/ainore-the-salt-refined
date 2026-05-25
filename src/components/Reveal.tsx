@@ -1,7 +1,8 @@
 import { motion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right" | "scale";
+
 
 const buildVariants = (direction: Direction, distance: number): Variants => {
   const offset = {
