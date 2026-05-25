@@ -182,7 +182,7 @@ function Marquee() {
 
 function Manifesto() {
   return (
-    <section id="craft" className="relative px-6 py-32 md:py-48">
+    <section id="craft" className="relative px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="mx-auto max-w-6xl">
         <Reveal direction="left" distance={200}>
           <p className="mb-12 text-[10px] uppercase tracking-[0.4em] text-accent">
@@ -190,7 +190,7 @@ function Manifesto() {
           </p>
         </Reveal>
         <Reveal direction="right" distance={300} delay={1}>
-          <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl lg:text-7xl">
+          <h2 className="font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl lg:text-7xl">
             A factory is only as honest as
             <span className="text-muted-foreground"> the first thing it ships.</span>
             <br />
@@ -225,7 +225,7 @@ function Product() {
   return (
     <section
       id="product"
-      className="relative overflow-hidden px-6 py-32 md:py-48"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
     >
       <div className="absolute inset-0 bg-aurora opacity-40" />
       <div className="relative mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:items-center">
@@ -234,7 +234,7 @@ function Product() {
             <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
               02 — Debut Product
             </p>
-            <h2 className="font-display text-5xl font-light leading-[1] tracking-tight md:text-7xl">
+            <h2 className="font-display text-4xl font-light leading-[1] tracking-tight sm:text-5xl md:text-7xl">
               The first,
               <br />
               <span className="italic text-foil">redrawn.</span>
@@ -342,7 +342,7 @@ function Manufacturing() {
     },
   ];
   return (
-    <section id="manufacturing" className="relative px-6 py-32 md:py-48">
+    <section id="manufacturing" className="relative px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="mx-auto max-w-7xl">
         <Reveal direction="left" distance={200}>
           <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
@@ -350,7 +350,7 @@ function Manufacturing() {
           </p>
         </Reveal>
         <Reveal direction="left" distance={350} delay={1}>
-          <h2 className="max-w-4xl font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl">
+          <h2 className="max-w-4xl font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
             The platform behind the product.
           </h2>
         </Reveal>
@@ -409,7 +409,7 @@ function Roadmap() {
     { tag: "Beyond", title: "Adjacent Verticals", note: "Materials · Personal care · Industrial" },
   ];
   return (
-    <section className="relative px-6 py-32 md:py-48">
+    <section className="relative px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="mx-auto max-w-6xl">
         <Reveal direction="right" distance={200}>
           <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
@@ -417,7 +417,7 @@ function Roadmap() {
           </p>
         </Reveal>
         <Reveal direction="right" distance={350} delay={1}>
-          <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl">
+          <h2 className="font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
             The first chapter is shipping.
             <br />
             <span className="text-muted-foreground">
@@ -469,7 +469,7 @@ function Sustainability() {
   return (
     <section
       id="sustainability"
-      className="relative overflow-hidden px-6 py-32 md:py-48"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
     >
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-5 lg:items-center">
         <Reveal direction="left" distance={400} delay={1} className="lg:col-span-3">
@@ -493,7 +493,7 @@ function Sustainability() {
             </p>
           </Reveal>
           <Reveal direction="right" distance={300} delay={1}>
-            <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-5xl">
+            <h2 className="font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl">
               Engineered with the planet in the spec sheet.
             </h2>
           </Reveal>
@@ -529,7 +529,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden px-6 py-32 md:py-48"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
     >
       <div className="absolute inset-0 bg-aurora opacity-60" />
       <Particles count={30} />
@@ -540,7 +540,7 @@ function Contact() {
           </p>
         </Reveal>
         <Reveal direction="scale" delay={1}>
-          <h2 className="font-display text-5xl font-light leading-[0.95] tracking-tight text-balance md:text-8xl">
+          <h2 className="font-display text-4xl font-light leading-[0.95] tracking-tight text-balance sm:text-5xl md:text-7xl lg:text-8xl">
             Build the next
             <br />
             <span className="italic text-foil">category</span> with us.
