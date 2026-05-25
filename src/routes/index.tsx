@@ -44,8 +44,9 @@ function Hero() {
     <section
       id="top"
       ref={ref}
-      className="relative flex h-screen min-h-[760px] w-full items-center justify-center overflow-hidden"
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden py-24 md:min-h-[760px] md:py-0"
     >
+
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <img
           src={heroSalt}
