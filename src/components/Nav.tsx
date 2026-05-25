@@ -30,12 +30,12 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 overflow-x-clip px-3 transition-all duration-500 sm:px-4 md:px-6 ${
         scrolled ? "py-2 md:py-3" : "py-4 md:py-6"
       }`}
     >
       <div
-        className={`mx-3 flex w-[calc(100%-1.5rem)] max-w-7xl items-center justify-between px-3 transition-all duration-500 sm:mx-4 sm:w-[calc(100%-2rem)] sm:px-4 md:mx-auto md:w-auto md:px-6 ${
+        className={`mx-auto flex w-full min-w-0 max-w-7xl items-center justify-between px-3 transition-all duration-500 sm:px-4 md:px-6 ${
           scrolled
             ? "rounded-full border border-border bg-background/60 px-3 py-2 backdrop-blur-xl md:max-w-5xl md:px-4"
             : ""
@@ -87,7 +87,7 @@ export function Nav() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed left-3 right-3 top-[60px] z-40 origin-top transition-all duration-300 sm:left-4 sm:right-4 sm:top-[64px] md:hidden ${
+        className={`fixed inset-x-3 top-[60px] z-40 max-w-[calc(100vw-1.5rem)] origin-top transition-all duration-300 sm:inset-x-4 sm:top-[64px] sm:max-w-[calc(100vw-2rem)] md:hidden ${
           open
             ? "pointer-events-auto opacity-100 translate-y-0"
             : "pointer-events-none opacity-0 -translate-y-2"
