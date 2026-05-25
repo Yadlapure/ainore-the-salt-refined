@@ -265,7 +265,7 @@ function Product() {
             </dl>
 
 
-            <div className="mt-12 flex gap-4">
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <a
                 href="#contact"
                 className="rounded-full bg-primary px-7 py-3.5 text-sm uppercase tracking-[0.18em] text-primary-foreground transition-all hover:shadow-glow"
