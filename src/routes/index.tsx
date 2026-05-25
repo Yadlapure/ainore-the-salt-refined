@@ -119,22 +119,23 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
-          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 md:mt-12"
         >
           <a
             href="#product"
-            className="group relative overflow-hidden rounded-full bg-primary px-8 py-4 text-sm font-medium uppercase tracking-[0.18em] text-primary-foreground transition-all hover:shadow-glow"
+            className="group relative overflow-hidden rounded-full bg-primary px-6 py-3.5 text-center text-sm font-medium uppercase tracking-[0.18em] text-primary-foreground transition-all hover:shadow-glow sm:px-8 sm:py-4"
           >
             <span className="relative z-10">Discover the Debut</span>
           </a>
           <a
             href="#manufacturing"
-            className="group inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:border-accent/60 hover:bg-glass"
+            className="group inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:border-accent/60 hover:bg-glass sm:px-8 sm:py-4"
           >
             Our Capability
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
         </motion.div>
+
       </motion.div>
 
       <motion.div
