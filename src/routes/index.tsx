@@ -164,18 +164,19 @@ function Marquee() {
   ];
   const doubled = [...items, ...items];
   return (
-    <div className="relative overflow-hidden border-y border-border py-6">
-      <div className="marquee-track flex w-max gap-16 whitespace-nowrap">
+    <div className="relative overflow-hidden border-y border-border py-4 md:py-6">
+      <div className="marquee-track flex w-max gap-10 whitespace-nowrap md:gap-16">
         {doubled.map((it, i) => (
           <span
             key={i}
-            className="font-display text-2xl tracking-[0.3em] text-muted-foreground/60"
+            className="font-display text-base tracking-[0.25em] text-muted-foreground/60 sm:text-xl md:text-2xl md:tracking-[0.3em]"
           >
-            {it} <span className="ml-16 text-accent">✦</span>
+            {it} <span className="ml-10 text-accent md:ml-16">✦</span>
           </span>
         ))}
       </div>
     </div>
+
   );
 }
 
