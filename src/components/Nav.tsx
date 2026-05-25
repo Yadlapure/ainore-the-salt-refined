@@ -35,21 +35,21 @@ export function Nav() {
       }`}
     >
       <div
-        className={`mx-auto flex max-w-7xl items-center justify-between px-4 md:px-6 transition-all duration-500 ${
+        className={`mx-3 flex w-[calc(100%-1.5rem)] max-w-7xl items-center justify-between px-3 transition-all duration-500 sm:mx-4 sm:w-[calc(100%-2rem)] sm:px-4 md:mx-auto md:w-auto md:px-6 ${
           scrolled
             ? "rounded-full border border-border bg-background/60 px-3 py-2 backdrop-blur-xl md:max-w-5xl md:px-4"
             : ""
         }`}
       >
-        <a href="#top" className="flex items-center gap-2 md:gap-3" onClick={() => setOpen(false)}>
+        <a href="#top" className="flex min-w-0 items-center gap-2 md:gap-3" onClick={() => setOpen(false)}>
           <img
             src={logo}
             alt="AINORE"
-            className="h-8 w-8 object-contain md:h-9 md:w-9"
+            className="h-7 w-7 shrink-0 object-contain sm:h-8 sm:w-8 md:h-9 md:w-9"
             width={72}
             height={72}
           />
-          <span className="font-display text-base tracking-[0.25em] text-foreground md:text-xl md:tracking-[0.3em]">
+          <span className="truncate font-display text-sm tracking-[0.2em] text-foreground sm:text-base sm:tracking-[0.25em] md:text-xl md:tracking-[0.3em]">
             AINORE
           </span>
         </a>
@@ -78,7 +78,7 @@ export function Nav() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/60 text-foreground backdrop-blur-xl md:hidden"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border bg-background/60 text-foreground backdrop-blur-xl sm:h-10 sm:w-10 md:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -87,13 +87,13 @@ export function Nav() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden fixed inset-x-0 top-[64px] z-40 origin-top transition-all duration-300 ${
+        className={`fixed left-3 right-3 top-[60px] z-40 origin-top transition-all duration-300 sm:left-4 sm:right-4 sm:top-[64px] md:hidden ${
           open
             ? "pointer-events-auto opacity-100 translate-y-0"
             : "pointer-events-none opacity-0 -translate-y-2"
         }`}
       >
-        <div className="mx-4 rounded-2xl border border-border bg-background/95 p-6 backdrop-blur-xl shadow-deep">
+        <div className="max-h-[calc(100svh-84px)] overflow-y-auto rounded-2xl border border-border bg-background/95 p-4 backdrop-blur-xl shadow-deep sm:p-6">
           <nav className="flex flex-col gap-1">
             {links.map((l) => (
               <a
