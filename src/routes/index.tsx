@@ -63,8 +63,9 @@ function Hero() {
 
       <motion.div
         style={{ opacity }}
-        className="relative z-10 mx-auto max-w-5xl px-6 text-center"
+        className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6"
       >
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
