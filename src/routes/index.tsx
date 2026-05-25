@@ -245,7 +245,7 @@ function Product() {
               Retail-grade. Export-ready. Quietly perfect.
             </p>
 
-            <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
+            <dl className="mt-12 grid grid-cols-3 gap-3 border-t border-border pt-8 sm:gap-6">
               {[
                 { k: "99.8%", v: "Purity" },
                 { k: "0", v: "Additives" },
@@ -253,16 +253,17 @@ function Product() {
               ].map((s, i) => (
                 <Reveal key={s.v} direction="up" distance={60} delay={i + 1}>
                   <div>
-                    <dt className="font-display text-3xl text-foreground md:text-4xl">
+                    <dt className="font-display text-xl text-foreground sm:text-3xl md:text-4xl">
                       {s.k}
                     </dt>
-                    <dd className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    <dd className="mt-2 text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:text-[10px] sm:tracking-[0.25em]">
                       {s.v}
                     </dd>
                   </div>
                 </Reveal>
               ))}
             </dl>
+
 
             <div className="mt-12 flex gap-4">
               <a
