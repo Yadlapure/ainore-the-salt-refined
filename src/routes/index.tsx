@@ -47,7 +47,7 @@ function Hero() {
       className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden py-24 md:min-h-[760px] md:py-0"
     >
 
-      <motion.div style={{ y, scale }} className="absolute inset-0">
+      <motion.div style={{ y, scale }} className="absolute inset-0 overflow-hidden">
         <img
           src={heroSalt}
           alt="Cinematic texture"
@@ -679,7 +679,7 @@ function Footer() {
 
 function Index() {
   return (
-    <div className="relative bg-background text-foreground">
+    <div className="relative w-full max-w-full overflow-x-clip bg-background text-foreground">
       <Nav />
       <main>
         <Hero />
