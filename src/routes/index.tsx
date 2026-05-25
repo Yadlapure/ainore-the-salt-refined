@@ -44,8 +44,9 @@ function Hero() {
     <section
       id="top"
       ref={ref}
-      className="relative flex h-screen min-h-[760px] w-full items-center justify-center overflow-hidden"
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden py-24 md:min-h-[760px] md:py-0"
     >
+
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <img
           src={heroSalt}
@@ -62,8 +63,9 @@ function Hero() {
 
       <motion.div
         style={{ opacity }}
-        className="relative z-10 mx-auto max-w-5xl px-6 text-center"
+        className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6"
       >
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -73,10 +75,11 @@ function Hero() {
           <img
             src={logo}
             alt="AINORE"
-            className="h-28 w-28 object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.25)] md:h-40 md:w-40"
+            className="h-20 w-20 object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.25)] sm:h-28 sm:w-28 md:h-40 md:w-40"
             width={320}
             height={320}
           />
+
         </motion.div>
 
         <motion.p
@@ -93,12 +96,13 @@ function Hero() {
           initial={{ opacity: 0, y: 40, filter: "blur(20px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-5xl font-light leading-[0.95] tracking-tight text-balance md:text-7xl lg:text-[7rem]"
+          className="font-display text-4xl font-light leading-[0.95] tracking-tight text-balance sm:text-5xl md:text-7xl lg:text-[7rem]"
         >
           We don't make
           <br />
           <span className="text-foil italic">just one thing.</span>
         </motion.h1>
+
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -115,22 +119,23 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
-          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 md:mt-12"
         >
           <a
             href="#product"
-            className="group relative overflow-hidden rounded-full bg-primary px-8 py-4 text-sm font-medium uppercase tracking-[0.18em] text-primary-foreground transition-all hover:shadow-glow"
+            className="group relative overflow-hidden rounded-full bg-primary px-6 py-3.5 text-center text-sm font-medium uppercase tracking-[0.18em] text-primary-foreground transition-all hover:shadow-glow sm:px-8 sm:py-4"
           >
             <span className="relative z-10">Discover the Debut</span>
           </a>
           <a
             href="#manufacturing"
-            className="group inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:border-accent/60 hover:bg-glass"
+            className="group inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:border-accent/60 hover:bg-glass sm:px-8 sm:py-4"
           >
             Our Capability
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
         </motion.div>
+
       </motion.div>
 
       <motion.div
@@ -159,24 +164,25 @@ function Marquee() {
   ];
   const doubled = [...items, ...items];
   return (
-    <div className="relative overflow-hidden border-y border-border py-6">
-      <div className="marquee-track flex w-max gap-16 whitespace-nowrap">
+    <div className="relative overflow-hidden border-y border-border py-4 md:py-6">
+      <div className="marquee-track flex w-max gap-10 whitespace-nowrap md:gap-16">
         {doubled.map((it, i) => (
           <span
             key={i}
-            className="font-display text-2xl tracking-[0.3em] text-muted-foreground/60"
+            className="font-display text-base tracking-[0.25em] text-muted-foreground/60 sm:text-xl md:text-2xl md:tracking-[0.3em]"
           >
-            {it} <span className="ml-16 text-accent">✦</span>
+            {it} <span className="ml-10 text-accent md:ml-16">✦</span>
           </span>
         ))}
       </div>
     </div>
+
   );
 }
 
 function Manifesto() {
   return (
-    <section id="craft" className="relative px-6 py-32 md:py-48">
+    <section id="craft" className="relative px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="mx-auto max-w-6xl">
         <Reveal direction="left" distance={200}>
           <p className="mb-12 text-[10px] uppercase tracking-[0.4em] text-accent">
@@ -184,7 +190,7 @@ function Manifesto() {
           </p>
         </Reveal>
         <Reveal direction="right" distance={300} delay={1}>
-          <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl lg:text-7xl">
+          <h2 className="font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl lg:text-7xl">
             A factory is only as honest as
             <span className="text-muted-foreground"> the first thing it ships.</span>
             <br />
@@ -219,7 +225,7 @@ function Product() {
   return (
     <section
       id="product"
-      className="relative overflow-hidden px-6 py-32 md:py-48"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
     >
       <div className="absolute inset-0 bg-aurora opacity-40" />
       <div className="relative mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:items-center">
@@ -228,7 +234,7 @@ function Product() {
             <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
               02 — Debut Product
             </p>
-            <h2 className="font-display text-5xl font-light leading-[1] tracking-tight md:text-7xl">
+            <h2 className="font-display text-4xl font-light leading-[1] tracking-tight sm:text-5xl md:text-7xl">
               The first,
               <br />
               <span className="italic text-foil">redrawn.</span>
@@ -239,7 +245,7 @@ function Product() {
               Retail-grade. Export-ready. Quietly perfect.
             </p>
 
-            <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
+            <dl className="mt-12 grid grid-cols-3 gap-3 border-t border-border pt-8 sm:gap-6">
               {[
                 { k: "99.8%", v: "Purity" },
                 { k: "0", v: "Additives" },
@@ -247,10 +253,10 @@ function Product() {
               ].map((s, i) => (
                 <Reveal key={s.v} direction="up" distance={60} delay={i + 1}>
                   <div>
-                    <dt className="font-display text-3xl text-foreground md:text-4xl">
+                    <dt className="font-display text-xl text-foreground sm:text-3xl md:text-4xl">
                       {s.k}
                     </dt>
-                    <dd className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    <dd className="mt-2 text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:text-[10px] sm:tracking-[0.25em]">
                       {s.v}
                     </dd>
                   </div>
@@ -258,7 +264,8 @@ function Product() {
               ))}
             </dl>
 
-            <div className="mt-12 flex gap-4">
+
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <a
                 href="#contact"
                 className="rounded-full bg-primary px-7 py-3.5 text-sm uppercase tracking-[0.18em] text-primary-foreground transition-all hover:shadow-glow"
@@ -336,7 +343,7 @@ function Manufacturing() {
     },
   ];
   return (
-    <section id="manufacturing" className="relative px-6 py-32 md:py-48">
+    <section id="manufacturing" className="relative px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="mx-auto max-w-7xl">
         <Reveal direction="left" distance={200}>
           <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
@@ -344,7 +351,7 @@ function Manufacturing() {
           </p>
         </Reveal>
         <Reveal direction="left" distance={350} delay={1}>
-          <h2 className="max-w-4xl font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl">
+          <h2 className="max-w-4xl font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
             The platform behind the product.
           </h2>
         </Reveal>
@@ -354,7 +361,7 @@ function Manufacturing() {
             <img
               src={factory}
               alt="AINORE manufacturing floor at night"
-              className="h-[420px] w-full object-cover md:h-[560px]"
+              className="h-[280px] w-full object-cover sm:h-[420px] md:h-[560px]"
               loading="lazy"
               width={1920}
               height={1080}
@@ -403,7 +410,7 @@ function Roadmap() {
     { tag: "Beyond", title: "Adjacent Verticals", note: "Materials · Personal care · Industrial" },
   ];
   return (
-    <section className="relative px-6 py-32 md:py-48">
+    <section className="relative px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="mx-auto max-w-6xl">
         <Reveal direction="right" distance={200}>
           <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
@@ -411,7 +418,7 @@ function Roadmap() {
           </p>
         </Reveal>
         <Reveal direction="right" distance={350} delay={1}>
-          <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-6xl">
+          <h2 className="font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
             The first chapter is shipping.
             <br />
             <span className="text-muted-foreground">
@@ -429,7 +436,7 @@ function Roadmap() {
               delay={i}
             >
               <div className="group flex flex-col gap-4 bg-background p-8 transition-all hover:bg-card md:flex-row md:items-center md:p-10">
-                <div className="w-32 shrink-0">
+                <div className="shrink-0 md:w-32">
                   <span
                     className={`inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] ${
                       it.tag === "Live"
@@ -463,7 +470,7 @@ function Sustainability() {
   return (
     <section
       id="sustainability"
-      className="relative overflow-hidden px-6 py-32 md:py-48"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
     >
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-5 lg:items-center">
         <Reveal direction="left" distance={400} delay={1} className="lg:col-span-3">
@@ -487,7 +494,7 @@ function Sustainability() {
             </p>
           </Reveal>
           <Reveal direction="right" distance={300} delay={1}>
-            <h2 className="font-display text-4xl font-light leading-[1.05] tracking-tight text-balance md:text-5xl">
+            <h2 className="font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl">
               Engineered with the planet in the spec sheet.
             </h2>
           </Reveal>
@@ -523,7 +530,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden px-6 py-32 md:py-48"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
     >
       <div className="absolute inset-0 bg-aurora opacity-60" />
       <Particles count={30} />
@@ -534,7 +541,7 @@ function Contact() {
           </p>
         </Reveal>
         <Reveal direction="scale" delay={1}>
-          <h2 className="font-display text-5xl font-light leading-[0.95] tracking-tight text-balance md:text-8xl">
+          <h2 className="font-display text-4xl font-light leading-[0.95] tracking-tight text-balance sm:text-5xl md:text-7xl lg:text-8xl">
             Build the next
             <br />
             <span className="italic text-foil">category</span> with us.

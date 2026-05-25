@@ -1,7 +1,8 @@
 import { motion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right" | "scale";
+
 
 const buildVariants = (direction: Direction, distance: number): Variants => {
   const offset = {
@@ -52,6 +53,15 @@ export function Reveal({
   once?: boolean;
 }) {
   const Comp = motion[Tag] as typeof motion.div;
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  const effectiveDistance = isMobile ? Math.min(distance, 60) : distance;
   return (
     <Comp
       className={className}
@@ -59,9 +69,10 @@ export function Reveal({
       whileInView="visible"
       viewport={{ once, margin: "-15% 0px -15% 0px" }}
       custom={delay}
-      variants={buildVariants(direction, distance)}
+      variants={buildVariants(direction, effectiveDistance)}
     >
       {children}
     </Comp>
   );
 }
+
