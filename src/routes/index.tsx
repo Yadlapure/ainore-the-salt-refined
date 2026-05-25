@@ -96,12 +96,13 @@ function Hero() {
           initial={{ opacity: 0, y: 40, filter: "blur(20px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-5xl font-light leading-[0.95] tracking-tight text-balance md:text-7xl lg:text-[7rem]"
+          className="font-display text-4xl font-light leading-[0.95] tracking-tight text-balance sm:text-5xl md:text-7xl lg:text-[7rem]"
         >
           We don't make
           <br />
           <span className="text-foil italic">just one thing.</span>
         </motion.h1>
+
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
