@@ -361,7 +361,7 @@ function Manufacturing() {
             <img
               src={factory}
               alt="AINORE manufacturing floor at night"
-              className="h-[420px] w-full object-cover md:h-[560px]"
+              className="h-[280px] w-full object-cover sm:h-[420px] md:h-[560px]"
               loading="lazy"
               width={1920}
               height={1080}
