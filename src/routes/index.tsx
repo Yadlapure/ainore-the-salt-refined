@@ -75,10 +75,11 @@ function Hero() {
           <img
             src={logo}
             alt="AINORE"
-            className="h-28 w-28 object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.25)] md:h-40 md:w-40"
+            className="h-20 w-20 object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.25)] sm:h-28 sm:w-28 md:h-40 md:w-40"
             width={320}
             height={320}
           />
+
         </motion.div>
 
         <motion.p
