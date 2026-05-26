@@ -67,7 +67,7 @@ export function Reveal({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: "-15% 0px -15% 0px" }}
+      viewport={{ once, amount: isMobile ? 0.05 : 0.15, margin: isMobile ? "0px" : "-10% 0px -10% 0px" }}
       custom={delay}
       variants={buildVariants(direction, effectiveDistance)}
     >
