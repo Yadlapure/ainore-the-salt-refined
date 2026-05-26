@@ -6,7 +6,7 @@ import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
 import heroSalt from "@/assets/hero-abstract.jpg";
 import factory from "@/assets/factory-new.jpg";
-import product from "@/assets/product-new.jpg";
+import product from "@/assets/product-debut.jpg";
 import saltPans from "@/assets/campus-aerial.jpg";
 import logo from "@/assets/ainore-logo-clean.png";
 
