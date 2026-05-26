@@ -22,8 +22,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "AINORE — Engineered Purity" },
       {
         property: "og:description",
-        content:
-          "A manufacturing powerhouse. Our debut is just the beginning.",
+        content: "A manufacturing powerhouse. Our debut is just the beginning.",
       },
     ],
   }),
@@ -46,7 +45,6 @@ function Hero() {
       ref={ref}
       className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden py-24 md:min-h-[760px] md:py-0"
     >
-
       <motion.div style={{ y, scale }} className="absolute inset-0 overflow-hidden">
         <img
           src={heroSalt}
@@ -65,7 +63,6 @@ function Hero() {
         style={{ opacity }}
         className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6"
       >
-
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -79,7 +76,6 @@ function Hero() {
             width={320}
             height={320}
           />
-
         </motion.div>
 
         <motion.p
@@ -88,8 +84,8 @@ function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
           className="mb-8 inline-flex items-center gap-3 rounded-full border border-border bg-glass px-5 py-2 text-[10px] uppercase tracking-[0.4em] text-muted-foreground"
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-glow" />
-          A New Manufacturing House
+          <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-glow" />A New Manufacturing
+          House
         </motion.p>
 
         <motion.h1
@@ -103,16 +99,14 @@ function Hero() {
           <span className="text-foil italic">just one thing.</span>
         </motion.h1>
 
-
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
           className="mx-auto mt-8 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground md:text-lg"
         >
-          AINORE is a precision manufacturing house engineered for whatever
-          comes next. Our debut product carries the same discipline that will
-          power every category we build.
+          AINORE is a precision manufacturing house engineered for whatever comes next. Our debut
+          product carries the same discipline that will power every category we build.
         </motion.p>
 
         <motion.div
@@ -135,7 +129,6 @@ function Hero() {
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
         </motion.div>
-
       </motion.div>
 
       <motion.div
@@ -176,7 +169,6 @@ function Marquee() {
         ))}
       </div>
     </div>
-
   );
 }
 
@@ -194,24 +186,22 @@ function Manifesto() {
             A factory is only as honest as
             <span className="text-muted-foreground"> the first thing it ships.</span>
             <br />
-            Ours had to be{" "}
-            <span className="italic text-foil">pure.</span>
+            Ours had to be <span className="italic text-foil">pure.</span>
           </h2>
         </Reveal>
         <div className="mt-16 grid gap-12 text-base leading-relaxed text-muted-foreground md:grid-cols-2 md:text-lg">
           <Reveal direction="left" distance={250} delay={2}>
             <p>
-              AINORE was built as a manufacturing platform — not a single
-              product. Our floors are designed for category-agnostic precision:
-              consumables, materials, formulations, finishing. Whatever we
-              choose to make next, the standard is set on day one.
+              AINORE was built as a manufacturing platform — not a single product. Our floors are
+              designed for category-agnostic precision: consumables, materials, formulations,
+              finishing. Whatever we choose to make next, the standard is set on day one.
             </p>
           </Reveal>
           <Reveal direction="right" distance={250} delay={3}>
             <p>
-              We chose a debut that forgives nothing. Every unit is a test of
-              source, environment, process and packaging. If we can ship the
-              cleanest product in the room, we can ship anything.
+              We chose a debut that forgives nothing. Every unit is a test of source, environment,
+              process and packaging. If we can ship the cleanest product in the room, we can ship
+              anything.
             </p>
           </Reveal>
         </div>
@@ -220,15 +210,12 @@ function Manifesto() {
   );
 }
 
-
 function Product() {
   return (
-    <section
-      id="product"
-      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
-    >
+    <section id="product" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="absolute inset-0 bg-aurora opacity-40" />
-      <div className="relative mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:items-center">
+      <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-center lg:gap-16">
+        {/* Text content */}
         <Reveal direction="left" distance={300}>
           <div>
             <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
@@ -240,9 +227,8 @@ function Product() {
               <span className="italic text-foil">redrawn.</span>
             </h2>
             <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Produced under controlled environment, finished in laminar
-              airflow, and sealed in a vessel built to outlast its contents.
-              Retail-grade. Export-ready. Quietly perfect.
+              Produced under controlled environment, finished in laminar airflow, and sealed in a
+              vessel built to outlast its contents. Retail-grade. Export-ready. Quietly perfect.
             </p>
 
             <dl className="mt-12 grid grid-cols-3 gap-3 border-t border-border pt-8 sm:gap-6">
@@ -264,29 +250,33 @@ function Product() {
               ))}
             </dl>
 
-
             <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <a
-                href="#contact"
-                className="rounded-full bg-primary px-7 py-3.5 text-sm uppercase tracking-[0.18em] text-primary-foreground transition-all hover:shadow-glow"
-              >
-                Request Sample
-              </a>
-              <a
-                href="#manufacturing"
-                className="rounded-full border border-border px-7 py-3.5 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:border-accent/60"
-              >
-                Spec Sheet
-              </a>
+              <Reveal direction="up" distance={60} delay={4}>
+                <a
+                  href="#contact"
+                  className="rounded-full bg-primary px-7 py-3.5 text-sm uppercase tracking-[0.18em] text-primary-foreground transition-all hover:shadow-glow"
+                >
+                  Request Sample
+                </a>
+              </Reveal>
+              <Reveal direction="up" distance={60} delay={5}>
+                <a
+                  href="#manufacturing"
+                  className="rounded-full border border-border px-7 py-3.5 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:border-accent/60"
+                >
+                  Spec Sheet
+                </a>
+              </Reveal>
             </div>
           </div>
         </Reveal>
 
-        <Reveal direction="right" distance={400} delay={2}>
+        {/* Image with scale animation like the manufacturing image */}
+        <Reveal direction="scale" delay={2} className="mt-8 lg:mt-0">
           <motion.div
             whileHover={{ scale: 1.03, rotate: -1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mx-auto aspect-[3/4] w-full max-w-lg"
+            className="relative mx-auto aspect-[3/4] w-full max-w-sm sm:max-w-md md:max-w-lg"
           >
             <div className="absolute -inset-10 rounded-full bg-accent/20 blur-3xl" />
             <div className="relative h-full w-full overflow-hidden rounded-3xl border border-border shadow-deep">
@@ -301,7 +291,7 @@ function Product() {
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
                 <div>
-                  <p className="font-display text-2xl text-foreground">N°01</p>
+                  <p className="font-display text-xl text-foreground sm:text-2xl">N°01</p>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     The Debut
                   </p>
@@ -313,7 +303,6 @@ function Product() {
             </div>
           </motion.div>
         </Reveal>
-
       </div>
     </section>
   );
@@ -346,9 +335,7 @@ function Manufacturing() {
     <section id="manufacturing" className="relative px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="mx-auto max-w-7xl">
         <Reveal direction="left" distance={200}>
-          <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
-            03 — Capability
-          </p>
+          <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">03 — Capability</p>
         </Reveal>
         <Reveal direction="left" distance={350} delay={1}>
           <h2 className="max-w-4xl font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
@@ -377,26 +364,16 @@ function Manufacturing() {
 
         <div className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
           {pillars.map((p, i) => (
-            <Reveal
-              key={p.t}
-              direction={i % 2 === 0 ? "left" : "right"}
-              distance={250}
-              delay={i}
-            >
+            <Reveal key={p.t} direction={i % 2 === 0 ? "left" : "right"} distance={250} delay={i}>
               <div className="group h-full bg-background p-8 transition-colors hover:bg-card md:p-10">
                 <p className="font-display text-sm text-accent">{p.n}</p>
-                <h3 className="mt-6 font-display text-2xl text-foreground">
-                  {p.t}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {p.d}
-                </p>
+                <h3 className="mt-6 font-display text-2xl text-foreground">{p.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
                 <span className="mt-8 block h-px w-8 bg-accent transition-all group-hover:w-16" />
               </div>
             </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   );
@@ -409,58 +386,53 @@ function Roadmap() {
     { tag: "2026", title: "Co-pack & Private Label", note: "Built for brand partners" },
     { tag: "Beyond", title: "Adjacent Verticals", note: "Materials · Personal care · Industrial" },
   ];
+
   return (
     <section className="relative px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="mx-auto max-w-6xl">
         <Reveal direction="right" distance={200}>
-          <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
-            04 — Roadmap
-          </p>
+          <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">04 — Roadmap</p>
         </Reveal>
+
         <Reveal direction="right" distance={350} delay={1}>
           <h2 className="font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
             The first chapter is shipping.
             <br />
-            <span className="text-muted-foreground">
-              The book is the manufacturing house.
-            </span>
+            <span className="text-muted-foreground">The book is the manufacturing house.</span>
           </h2>
         </Reveal>
 
         <div className="mt-20 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
           {items.map((it, i) => (
-            <Reveal
+            <motion.div
               key={it.title}
-              direction={i % 2 === 0 ? "left" : "right"}
-              distance={400}
-              delay={i}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="group flex flex-col gap-4 bg-background p-8 transition-all hover:bg-card md:flex-row md:items-center md:p-10"
             >
-              <div className="group flex flex-col gap-4 bg-background p-8 transition-all hover:bg-card md:flex-row md:items-center md:p-10">
-                <div className="shrink-0 md:w-32">
-                  <span
-                    className={`inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] ${
-                      it.tag === "Live"
-                        ? "bg-accent text-accent-foreground"
-                        : "border border-border text-muted-foreground"
-                    }`}
-                  >
-                    {it.tag}
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-display text-2xl text-foreground md:text-3xl">
-                    {it.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{it.note}</p>
-                </div>
-                <span className="font-display text-3xl text-muted-foreground/40 transition-all group-hover:text-accent group-hover:translate-x-2">
-                  →
+              <div className="shrink-0 md:w-32">
+                <span
+                  className={`inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] ${
+                    it.tag === "Live"
+                      ? "bg-accent text-accent-foreground"
+                      : "border border-border text-muted-foreground"
+                  }`}
+                >
+                  {it.tag}
                 </span>
               </div>
-            </Reveal>
+              <div className="flex-1">
+                <h3 className="font-display text-2xl text-foreground md:text-3xl">{it.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{it.note}</p>
+              </div>
+              <span className="font-display text-3xl text-muted-foreground/40 transition-all group-hover:text-accent group-hover:translate-x-2">
+                →
+              </span>
+            </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
@@ -472,8 +444,9 @@ function Sustainability() {
       id="sustainability"
       className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
     >
-      <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-5 lg:items-center">
-        <Reveal direction="left" distance={400} delay={1} className="lg:col-span-3">
+      <div className="mx-auto grid max-w-7xl gap-12 lg:gap-16 lg:grid-cols-5 lg:items-center">
+        {/* Image section with Reveal scale animation like manufacturing image */}
+        <Reveal direction="scale" delay={1} className="lg:col-span-3">
           <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-border shadow-deep">
             <img
               src={saltPans}
@@ -500,9 +473,8 @@ function Sustainability() {
           </Reveal>
           <Reveal direction="right" distance={300} delay={2}>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              Solar-assisted processing. Recyclable packaging. Closed-loop
-              water on every line. The same restraint that defines our product
-              defines its footprint.
+              Solar-assisted processing. Recyclable packaging. Closed-loop water on every line. The
+              same restraint that defines our product defines its footprint.
             </p>
           </Reveal>
           <ul className="mt-8 space-y-3 text-sm">
@@ -520,7 +492,6 @@ function Sustainability() {
             ))}
           </ul>
         </div>
-
       </div>
     </section>
   );
@@ -528,10 +499,7 @@ function Sustainability() {
 
 function Contact() {
   return (
-    <section
-      id="contact"
-      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
-    >
+    <section id="contact" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="absolute inset-0 bg-aurora opacity-60" />
       <Particles count={30} />
       <div className="relative mx-auto max-w-5xl text-center">
@@ -550,9 +518,8 @@ function Contact() {
 
         <Reveal delay={2}>
           <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Distributors, co-packers, retailers, and product founders — if you
-            need a manufacturing partner who treats your spec like our own, we
-            should talk.
+            Distributors, co-packers, retailers, and product founders — if you need a manufacturing
+            partner who treats your spec like our own, we should talk.
           </p>
         </Reveal>
         <Reveal delay={3}>
@@ -577,9 +544,7 @@ function Contact() {
         <Reveal delay={4}>
           <div className="mx-auto mt-16 grid max-w-4xl gap-8 border-t border-border pt-12 text-left md:grid-cols-3">
             <div>
-              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">
-                Email
-              </p>
+              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">Email</p>
               <a
                 href="mailto:granityinternational@gmail.com"
                 className="text-sm text-foreground hover:text-accent"
@@ -588,9 +553,7 @@ function Contact() {
               </a>
             </div>
             <div>
-              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">
-                FSSAI
-              </p>
+              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">FSSAI</p>
               <p className="font-display text-sm tracking-[0.15em] text-foreground">
                 11226334000424
               </p>
@@ -630,8 +593,8 @@ function Footer() {
             <p className="font-display text-3xl tracking-[0.3em]">AINORE</p>
           </div>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            A manufacturing house engineered for whatever comes next. Our debut
-            is shipping — and it's only the beginning.
+            A manufacturing house engineered for whatever comes next. Our debut is shipping — and
+            it's only the beginning.
           </p>
           <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
             Grainity International Pvt. Ltd.
@@ -642,25 +605,30 @@ function Footer() {
           </p>
         </div>
         <div>
-          <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-accent">
-            Explore
-          </p>
+          <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-accent">Explore</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="#product" className="hover:text-foreground">Debut</a></li>
-            <li><a href="#manufacturing" className="hover:text-foreground">Manufacturing</a></li>
-            <li><a href="#sustainability" className="hover:text-foreground">Sustainability</a></li>
+            <li>
+              <a href="#product" className="hover:text-foreground">
+                Debut
+              </a>
+            </li>
+            <li>
+              <a href="#manufacturing" className="hover:text-foreground">
+                Manufacturing
+              </a>
+            </li>
+            <li>
+              <a href="#sustainability" className="hover:text-foreground">
+                Sustainability
+              </a>
+            </li>
           </ul>
         </div>
         <div>
-          <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-accent">
-            Contact
-          </p>
+          <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-accent">Contact</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <a
-                href="mailto:granityinternational@gmail.com"
-                className="hover:text-foreground"
-              >
+              <a href="mailto:granityinternational@gmail.com" className="hover:text-foreground">
                 granityinternational@gmail.com
               </a>
             </li>
