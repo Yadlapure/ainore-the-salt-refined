@@ -130,18 +130,6 @@ function Hero() {
           </a>
         </motion.div>
       </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
-        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.4em] text-muted-foreground"
-      >
-        <div className="flex flex-col items-center gap-3">
-          Scroll
-          <span className="block h-10 w-px animate-pulse bg-gradient-to-b from-accent to-transparent" />
-        </div>
-      </motion.div>
     </section>
   );
 }
@@ -464,7 +452,7 @@ function Manufacturers() {
       date: "12-Jun-26"
     }
   ];
-  
+
 
   return (
     <section id="manufacturers" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
