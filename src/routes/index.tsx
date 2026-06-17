@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Nav } from "@/components/Nav";
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
@@ -192,6 +192,151 @@ function Manifesto() {
               anything.
             </p>
           </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Manufacturers() {
+  const [activeTab, setActiveTab] = useState("salt");
+
+  const manufacturers = {
+    salt: [
+      {
+        name: "MAGHIL AQUA PRODUCTS",
+        gst: "33ABSPJ1258Q1Z2",
+        address: "135 C. Polpettai Near, New Bus Stand, Thoothukudi, Tamilnadu - 628002",
+      },
+      {
+        name: "S.K.S.C. NADARAJAN & BROR",
+        gst: "33AAEFS893L1ZS",
+        address: "No. 117, South Raja Street, Tuticorin - 628 001",
+      }
+    ],
+    tea: [
+      // Tea manufacturers will be added here in the future
+      {
+        name: "Coming Soon",
+        gst: "",
+        address: "Tea manufacturers will be listed here",
+        phone: "",
+        email: "",
+        state: "",
+        products: ["Premium Tea", "Specialty Tea"],
+        invoice: "",
+        date: "",
+        specs: {
+          "Status": "Coming Soon"
+        }
+      }
+    ]
+  };
+
+  return (
+    <section id="manufacturers" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
+      <div className="absolute inset-0 bg-aurora opacity-30" />
+      <div className="relative mx-auto max-w-7xl">
+        <Reveal direction="left" distance={200}>
+          <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
+            Our Manufacturers
+          </p>
+        </Reveal>
+        <Reveal direction="left" distance={350} delay={1}>
+          <h2 className="max-w-4xl font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
+            The <span className="italic text-foil">craftsmen</span> behind our products.
+          </h2>
+        </Reveal>
+
+        {/* Category Tabs */}
+        <div className="mt-12 flex gap-2 border-b border-border">
+          <button
+            onClick={() => setActiveTab("salt")}
+            className={`px-6 py-3 text-sm font-medium transition-all ${
+              activeTab === "salt"
+                ? "border-b-2 border-accent text-foreground"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Salt
+          </button>
+          <button
+            onClick={() => setActiveTab("tea")}
+            className={`px-6 py-3 text-sm font-medium transition-all ${
+              activeTab === "tea"
+                ? "border-b-2 border-accent text-foreground"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Tea
+            <span className="ml-2 rounded-full bg-accent/20 px-2 py-0.5 text-[8px] uppercase tracking-[0.15em] text-accent">
+              Soon
+            </span>
+          </button>
+        </div>
+
+        {/* Manufacturer Cards */}
+        <div className="mt-8">
+          {activeTab === "salt" ? (
+            <div className="grid gap-6 md:grid-cols-2">
+              {manufacturers.salt.map((m, i) => (
+                <Reveal 
+                  key={m.name} 
+                  direction={i === 0 ? "left" : "right"} 
+                  distance={300} 
+                  delay={i + 2}
+                >
+                  <motion.div
+                    whileHover={{ y: -8 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="h-full rounded-2xl border border-border bg-card/40 p-8 shadow-deep backdrop-blur-sm transition-all hover:border-accent/40 hover:shadow-glow md:p-10"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h3 className="font-display text-2xl text-foreground">{m.name}</h3>
+                        {m.gst && (
+                          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-accent">
+                            GST: {m.gst}
+                          </p>
+                        )}
+                      </div>
+                      <span className="rounded-full border border-accent/30 bg-glass px-3 py-1 text-[9px] uppercase tracking-[0.2em] text-accent">
+                        Manufacturer
+                      </span>
+                    </div>
+
+                    {m.address && (
+                      <div className="mt-6 space-y-3 text-sm text-muted-foreground">
+                        <div className="flex items-start gap-3">
+                          <span className="mt-0.5 text-accent">📍</span>
+                          <span>{m.address}</span>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                </Reveal>
+              ))}
+            </div>
+          ) : (
+            // Tea Tab - Coming Soon
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex min-h-[400px] flex-col items-center justify-center rounded-2xl border border-border bg-card/40 p-12 text-center shadow-deep backdrop-blur-sm"
+            >
+              <div className="mb-6 text-6xl">🍵</div>
+              <h3 className="font-display text-3xl text-foreground">Tea Manufacturers Coming Soon</h3>
+              <p className="mt-4 max-w-md text-muted-foreground">
+                We're currently onboarding premium tea manufacturers. 
+                Check back soon for our curated selection of tea partners.
+              </p>
+              <div className="mt-8 flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-6 py-3">
+                <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+                <span className="text-xs uppercase tracking-[0.2em] text-accent">Onboarding</span>
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
@@ -426,125 +571,6 @@ function Roadmap() {
   );
 }
 
-function Manufacturers() {
-  const manufacturers = [
-    {
-      name: "MAGHIL AQUA PRODUCTS",
-      gst: "33ABSPJ1258Q1Z2",
-      address: "135 C. Polpettai Near, New Bus Stand, Thoothukudi, Tamilnadu - 628002",
-      phone: "8438160369",
-      email: "maghilqua@gmail.com",
-      website: "www.maghilquaproducts.com",
-      state: "33 - Tamil Nadu",
-      products: ["NICE Crystal Iodised Salt", "NICE Refined Iodised Free Flow"],
-      invoice: "2026-27/325",
-      date: "11-06-2026"
-    },
-    {
-      name: "S.K.S.C. NADARAJAN & BROR",
-      gst: "33AAEFS893L1ZS",
-      address: "No. 117, South Raja Street, Tuticorin - 628 001",
-      phone: "0461 - 2327693, 98427 36693",
-      email: "skscsalt@gmail.com",
-      state: "33 - Tamil Nadu",
-      products: ["Relish Freeflow Iodised Salt (1kg)"],
-      invoice: "103",
-      date: "12-Jun-26"
-    }
-  ];
-
-
-  return (
-    <section id="manufacturers" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
-      <div className="absolute inset-0 bg-aurora opacity-30" />
-      <div className="relative mx-auto max-w-7xl">
-        <Reveal direction="left" distance={200}>
-          <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
-            Our Manufacturers
-          </p>
-        </Reveal>
-        <Reveal direction="left" distance={350} delay={1}>
-          <h2 className="max-w-4xl font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
-            The <span className="italic text-foil">craftsmen</span> behind our products.
-          </h2>
-        </Reveal>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {manufacturers.map((m, i) => (
-            <Reveal 
-              key={m.name} 
-              direction={i === 0 ? "left" : "right"} 
-              distance={300} 
-              delay={i + 2}
-            >
-              <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="h-full rounded-2xl border border-border bg-card/40 p-8 shadow-deep backdrop-blur-sm transition-all hover:border-accent/40 hover:shadow-glow md:p-10"
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="font-display text-2xl text-foreground">{m.name}</h3>
-                    <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-accent">
-                      GST: {m.gst}
-                    </p>
-                  </div>
-                  <span className="rounded-full border border-accent/30 bg-glass px-3 py-1 text-[9px] uppercase tracking-[0.2em] text-accent">
-                    Manufacturer
-                  </span>
-                </div>
-
-                <div className="mt-6 space-y-3 text-sm text-muted-foreground">
-                  <div className="flex items-start gap-3">
-                    <span className="mt-0.5 text-accent">📍</span>
-                    <span>{m.address}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-accent">📞</span>
-                    <span>{m.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-accent">✉️</span>
-                    <a href={`mailto:${m.email}`} className="hover:text-accent">
-                      {m.email}
-                    </a>
-                  </div>
-                  {m.website && (
-                    <div className="flex items-center gap-3">
-                      <span className="text-accent">🌐</span>
-                      <a href={`https://${m.website}`} className="hover:text-accent" target="_blank" rel="noopener noreferrer">
-                        {m.website}
-                      </a>
-                    </div>
-                  )}
-                  <div className="flex items-center gap-3">
-                    <span className="text-accent">🏛️</span>
-                    <span>{m.state}</span>
-                  </div>
-                </div>
-
-                <div className="mt-6 border-t border-border pt-6">
-                  <p className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Products Manufactured</p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {m.products.map((p) => (
-                      <span
-                        key={p}
-                        className="rounded-full border border-border/50 bg-background/50 px-3 py-1 text-xs text-foreground"
-                      >
-                        {p}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Sustainability() {
   return (
     <section
@@ -761,9 +787,9 @@ function Index() {
         <Marquee />
         <Manifesto />
         <Product />
+        <Manufacturers />
         <Manufacturing />
         <Roadmap />
-        <Manufacturers />
         <Sustainability />
         <Contact />
       </main>

@@ -6,7 +6,6 @@ const links = [
   { href: "#product", label: "Debut" },
   { href: "#craft", label: "Craft" },
   { href: "#manufacturing", label: "Manufacturing" },
-  { href: "#manufacturers", label: "Manufacturers" }, // <-- ADDED
   { href: "#sustainability", label: "Sustainability" },
   { href: "#contact", label: "Contact" },
 ];
@@ -42,11 +41,7 @@ export function Nav() {
             : ""
         }`}
       >
-        <a
-          href="#top"
-          className="flex min-w-0 items-center gap-2 md:gap-3"
-          onClick={() => setOpen(false)}
-        >
+        <a href="#top" className="flex min-w-0 items-center gap-2 md:gap-3" onClick={() => setOpen(false)}>
           <img
             src={logo}
             alt="AINORE"
