@@ -464,6 +464,7 @@ function Manufacturers() {
       date: "12-Jun-26"
     }
   ];
+  
 
   return (
     <section id="manufacturers" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
