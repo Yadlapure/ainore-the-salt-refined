@@ -438,6 +438,124 @@ function Roadmap() {
   );
 }
 
+function Manufacturers() {
+  const manufacturers = [
+    {
+      name: "MAGHIL AQUA PRODUCTS",
+      gst: "33ABSPJ1258Q1Z2",
+      address: "135 C. Polpettai Near, New Bus Stand, Thoothukudi, Tamilnadu - 628002",
+      phone: "8438160369",
+      email: "maghilqua@gmail.com",
+      website: "www.maghilquaproducts.com",
+      state: "33 - Tamil Nadu",
+      products: ["NICE Crystal Iodised Salt", "NICE Refined Iodised Free Flow"],
+      invoice: "2026-27/325",
+      date: "11-06-2026"
+    },
+    {
+      name: "S.K.S.C. NADARAJAN & BROR",
+      gst: "33AAEFS893L1ZS",
+      address: "No. 117, South Raja Street, Tuticorin - 628 001",
+      phone: "0461 - 2327693, 98427 36693",
+      email: "skscsalt@gmail.com",
+      state: "33 - Tamil Nadu",
+      products: ["Relish Freeflow Iodised Salt (1kg)"],
+      invoice: "103",
+      date: "12-Jun-26"
+    }
+  ];
+
+  return (
+    <section id="manufacturers" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
+      <div className="absolute inset-0 bg-aurora opacity-30" />
+      <div className="relative mx-auto max-w-7xl">
+        <Reveal direction="left" distance={200}>
+          <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
+            Our Manufacturers
+          </p>
+        </Reveal>
+        <Reveal direction="left" distance={350} delay={1}>
+          <h2 className="max-w-4xl font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
+            The <span className="italic text-foil">craftsmen</span> behind our products.
+          </h2>
+        </Reveal>
+
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          {manufacturers.map((m, i) => (
+            <Reveal 
+              key={m.name} 
+              direction={i === 0 ? "left" : "right"} 
+              distance={300} 
+              delay={i + 2}
+            >
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="h-full rounded-2xl border border-border bg-card/40 p-8 shadow-deep backdrop-blur-sm transition-all hover:border-accent/40 hover:shadow-glow md:p-10"
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="font-display text-2xl text-foreground">{m.name}</h3>
+                    <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-accent">
+                      GST: {m.gst}
+                    </p>
+                  </div>
+                  <span className="rounded-full border border-accent/30 bg-glass px-3 py-1 text-[9px] uppercase tracking-[0.2em] text-accent">
+                    Manufacturer
+                  </span>
+                </div>
+
+                <div className="mt-6 space-y-3 text-sm text-muted-foreground">
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5 text-accent">📍</span>
+                    <span>{m.address}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-accent">📞</span>
+                    <span>{m.phone}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-accent">✉️</span>
+                    <a href={`mailto:${m.email}`} className="hover:text-accent">
+                      {m.email}
+                    </a>
+                  </div>
+                  {m.website && (
+                    <div className="flex items-center gap-3">
+                      <span className="text-accent">🌐</span>
+                      <a href={`https://${m.website}`} className="hover:text-accent" target="_blank" rel="noopener noreferrer">
+                        {m.website}
+                      </a>
+                    </div>
+                  )}
+                  <div className="flex items-center gap-3">
+                    <span className="text-accent">🏛️</span>
+                    <span>{m.state}</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 border-t border-border pt-6">
+                  <p className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Products Manufactured</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {m.products.map((p) => (
+                      <span
+                        key={p}
+                        className="rounded-full border border-border/50 bg-background/50 px-3 py-1 text-xs text-foreground"
+                      >
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Sustainability() {
   return (
     <section
@@ -656,6 +774,7 @@ function Index() {
         <Product />
         <Manufacturing />
         <Roadmap />
+        <Manufacturers />
         <Sustainability />
         <Contact />
       </main>
