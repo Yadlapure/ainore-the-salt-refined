@@ -200,6 +200,7 @@ function Manifesto() {
 
 function Manufacturers() {
   const [activeTab, setActiveTab] = useState("salt");
+  const [isOpen, setIsOpen] = useState(false);
 
   const manufacturers = {
     salt: [
@@ -212,10 +213,9 @@ function Manufacturers() {
         name: "S.K.S.C. NADARAJAN & BROR",
         gst: "33AAEFS893L1ZS",
         address: "No. 117, South Raja Street, Tuticorin - 628 001",
-      }
+      },
     ],
     tea: [
-      // Tea manufacturers will be added here in the future
       {
         name: "Coming Soon",
         gst: "",
@@ -227,14 +227,17 @@ function Manufacturers() {
         invoice: "",
         date: "",
         specs: {
-          "Status": "Coming Soon"
-        }
-      }
-    ]
+          Status: "Coming Soon",
+        },
+      },
+    ],
   };
 
   return (
-    <section id="manufacturers" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
+    <section
+      id="manufacturers"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48"
+    >
       <div className="absolute inset-0 bg-aurora opacity-30" />
       <div className="relative mx-auto max-w-7xl">
         <Reveal direction="left" distance={200}>
@@ -243,52 +246,85 @@ function Manufacturers() {
           </p>
         </Reveal>
         <Reveal direction="left" distance={350} delay={1}>
-          <h2 className="max-w-4xl font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
-            The <span className="italic text-foil">craftsmen</span> behind our products.
-          </h2>
+          <div
+            className="flex cursor-pointer items-center gap-4"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <h2 className="max-w-4xl font-display text-3xl font-light leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-6xl">
+              The <span className="italic text-foil">craftsmen</span> behind our products.
+            </h2>
+            <motion.button
+              animate={{ rotate: isOpen ? 90 : 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="shrink-0 rounded-full border border-accent/30 bg-glass p-3 text-accent transition-all hover:border-accent hover:bg-accent/10 hover:shadow-glow"
+              aria-label={isOpen ? "Close manufacturers" : "View manufacturers"}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </motion.button>
+          </div>
         </Reveal>
 
-        {/* Category Tabs */}
-        <div className="mt-12 flex gap-2 border-b border-border">
-          <button
-            onClick={() => setActiveTab("salt")}
-            className={`px-6 py-3 text-sm font-medium transition-all ${
-              activeTab === "salt"
-                ? "border-b-2 border-accent text-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Salt
-          </button>
-          <button
-            onClick={() => setActiveTab("tea")}
-            className={`px-6 py-3 text-sm font-medium transition-all ${
-              activeTab === "tea"
-                ? "border-b-2 border-accent text-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Tea
-            <span className="ml-2 rounded-full bg-accent/20 px-2 py-0.5 text-[8px] uppercase tracking-[0.15em] text-accent">
-              Soon
-            </span>
-          </button>
-        </div>
+        {/* Category Tabs - Only show when isOpen is true */}
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{
+            height: isOpen ? "auto" : 0,
+            opacity: isOpen ? 1 : 0,
+            marginTop: isOpen ? 48 : 0,
+          }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="overflow-hidden"
+        >
+          <div className="flex gap-2 border-b border-border">
+            <button
+              onClick={() => setActiveTab("salt")}
+              className={`px-6 py-3 text-sm font-medium transition-all ${
+                activeTab === "salt"
+                  ? "border-b-2 border-accent text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Salt
+            </button>
+            <button
+              onClick={() => setActiveTab("tea")}
+              className={`px-6 py-3 text-sm font-medium transition-all ${
+                activeTab === "tea"
+                  ? "border-b-2 border-accent text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Tea
+              <span className="ml-2 rounded-full bg-accent/20 px-2 py-0.5 text-[8px] uppercase tracking-[0.15em] text-accent">
+                Soon
+              </span>
+            </button>
+          </div>
 
-        {/* Manufacturer Cards */}
-        <div className="mt-8">
-          {activeTab === "salt" ? (
-            <div className="grid gap-6 md:grid-cols-2">
-              {manufacturers.salt.map((m, i) => (
-                <Reveal 
-                  key={m.name} 
-                  direction={i === 0 ? "left" : "right"} 
-                  distance={300} 
-                  delay={i + 2}
-                >
+          {/* Manufacturer Cards - Fixed: Removed Reveal wrapper, using direct motion.div */}
+          <div className="mt-8">
+            {activeTab === "salt" ? (
+              <div className="grid gap-6 md:grid-cols-2">
+                {manufacturers.salt.map((m, i) => (
                   <motion.div
+                    key={m.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
                     whileHover={{ y: -8 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="h-full rounded-2xl border border-border bg-card/40 p-8 shadow-deep backdrop-blur-sm transition-all hover:border-accent/40 hover:shadow-glow md:p-10"
                   >
                     <div className="flex items-start justify-between">
@@ -314,30 +350,31 @@ function Manufacturers() {
                       </div>
                     )}
                   </motion.div>
-                </Reveal>
-              ))}
-            </div>
-          ) : (
-            // Tea Tab - Coming Soon
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex min-h-[400px] flex-col items-center justify-center rounded-2xl border border-border bg-card/40 p-12 text-center shadow-deep backdrop-blur-sm"
-            >
-              <div className="mb-6 text-6xl">🍵</div>
-              <h3 className="font-display text-3xl text-foreground">Tea Manufacturers Coming Soon</h3>
-              <p className="mt-4 max-w-md text-muted-foreground">
-                We're currently onboarding premium tea manufacturers. 
-                Check back soon for our curated selection of tea partners.
-              </p>
-              <div className="mt-8 flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-6 py-3">
-                <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-xs uppercase tracking-[0.2em] text-accent">Onboarding</span>
+                ))}
               </div>
-            </motion.div>
-          )}
-        </div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="flex min-h-[400px] flex-col items-center justify-center rounded-2xl border border-border bg-card/40 p-12 text-center shadow-deep backdrop-blur-sm"
+              >
+                <div className="mb-6 text-6xl">🍵</div>
+                <h3 className="font-display text-3xl text-foreground">
+                  Tea Manufacturers Coming Soon
+                </h3>
+                <p className="mt-4 max-w-md text-muted-foreground">
+                  We're currently onboarding premium tea manufacturers. Check back soon for our
+                  curated selection of tea partners.
+                </p>
+                <div className="mt-8 flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-6 py-3">
+                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+                  <span className="text-xs uppercase tracking-[0.2em] text-accent">Onboarding</span>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
