@@ -201,18 +201,31 @@ function Manifesto() {
 function Manufacturers() {
   const [activeTab, setActiveTab] = useState("salt");
   const [isOpen, setIsOpen] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const manufacturers = {
     salt: [
       {
         name: "MAGHIL AQUA PRODUCTS",
         gst: "33ABSPJ1258Q1Z2",
+        fssai: "",
         address: "135 C. Polpettai Near, New Bus Stand, Thoothukudi, Tamilnadu - 628002",
+        batch_no: "MG001",
       },
       {
         name: "S.K.S.C. NADARAJAN & BROR",
         gst: "33AAEFS893L1ZS",
+        fssai: "10014042001615",
         address: "No. 117, South Raja Street, Tuticorin - 628 001",
+        batch_no: "SK001",
+      },
+      {
+        name: "BHAGWATI MARKETING",
+        gst: "29AAFFB2454A1ZW",
+        fssai: "11222332000268",
+        address:
+          "#23, 5TH CROSS ROAD, LORRY SHED GODOWN AREA, NEAR APMC YARD, YESHWANTHPUR, BANGALORE, 560022",
+        batch_no: "BM001",
       },
     ],
     tea: [
@@ -232,6 +245,24 @@ function Manufacturers() {
       },
     ],
   };
+
+  const handleScroll = (direction: "left" | "right") => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollAmount = 400;
+    const targetScroll =
+      direction === "left"
+        ? container.scrollLeft - scrollAmount
+        : container.scrollLeft + scrollAmount;
+
+    container.scrollTo({
+      left: targetScroll,
+      behavior: "smooth",
+    });
+  };
+
+  const currentManufacturers = manufacturers[activeTab as keyof typeof manufacturers] || [];
 
   return (
     <section
@@ -277,7 +308,6 @@ function Manufacturers() {
           </div>
         </Reveal>
 
-        {/* Category Tabs - Only show when isOpen is true */}
         <motion.div
           initial={{ height: 0, opacity: 0 }}
           animate={{
@@ -288,20 +318,20 @@ function Manufacturers() {
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="overflow-hidden"
         >
-          <div className="flex gap-2 border-b border-border">
+          <div className="flex gap-2 border-b border-border overflow-x-auto pb-1">
             <button
               onClick={() => setActiveTab("salt")}
-              className={`px-6 py-3 text-sm font-medium transition-all ${
+              className={`px-4 sm:px-6 py-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
                 activeTab === "salt"
                   ? "border-b-2 border-accent text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Salt
+              Salt ({manufacturers.salt.length})
             </button>
             <button
               onClick={() => setActiveTab("tea")}
-              className={`px-6 py-3 text-sm font-medium transition-all ${
+              className={`px-4 sm:px-6 py-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
                 activeTab === "tea"
                   ? "border-b-2 border-accent text-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -314,65 +344,142 @@ function Manufacturers() {
             </button>
           </div>
 
-          {/* Manufacturer Cards - Fixed: Removed Reveal wrapper, using direct motion.div */}
-          <div className="mt-8">
-            {activeTab === "salt" ? (
-              <div className="grid gap-6 md:grid-cols-2">
-                {manufacturers.salt.map((m, i) => (
+          <div className="mt-6 md:mt-8 relative group">
+            {/* Left Scroll Button - Hidden on mobile */}
+            <button
+              onClick={() => handleScroll("left")}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-background/80 backdrop-blur-sm border border-accent/30 text-accent hover:bg-accent/20 hover:border-accent transition-all shadow-lg opacity-0 group-hover:opacity-100"
+              aria-label="Scroll left"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+
+            {/* Right Scroll Button - Hidden on mobile */}
+            <button
+              onClick={() => handleScroll("right")}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-background/80 backdrop-blur-sm border border-accent/30 text-accent hover:bg-accent/20 hover:border-accent transition-all shadow-lg opacity-0 group-hover:opacity-100"
+              aria-label="Scroll right"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+
+            {/* Horizontal Scroll Container */}
+            <div
+              ref={scrollContainerRef}
+              className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 md:pb-6 scrollbar-hide"
+              style={{ scrollSnapType: "x mandatory" }}
+            >
+              {activeTab === "salt" ? (
+                currentManufacturers.map((m, i) => (
                   <motion.div
                     key={m.name}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                    transition={{ duration: 0.4, delay: i * 0.05 }}
                     whileHover={{ y: -8 }}
-                    className="h-full rounded-2xl border border-border bg-card/40 p-8 shadow-deep backdrop-blur-sm transition-all hover:border-accent/40 hover:shadow-glow md:p-10"
+                    className="min-w-[280px] max-w-[320px] sm:min-w-[320px] sm:max-w-[380px] flex-shrink-0 rounded-2xl border border-border bg-card/40 p-5 sm:p-8 shadow-deep backdrop-blur-sm transition-all hover:border-accent/40 hover:shadow-glow md:min-w-[380px] md:p-10"
+                    style={{ scrollSnapAlign: "start" }}
                   >
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h3 className="font-display text-2xl text-foreground">{m.name}</h3>
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-0">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-display text-lg sm:text-2xl text-foreground break-words">
+                          {m.name}
+                        </h3>
                         {m.gst && (
-                          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-accent">
+                          <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
                             GST: {m.gst}
                           </p>
                         )}
+                        {m.fssai && (
+                          <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
+                            FSSAI: {m.fssai}
+                          </p>
+                        )}
+                        {m.batch_no && (
+                          <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
+                            BATCH NO: {m.batch_no}
+                          </p>
+                        )}
                       </div>
-                      <span className="rounded-full border border-accent/30 bg-glass px-3 py-1 text-[9px] uppercase tracking-[0.2em] text-accent">
+                      <span className="shrink-0 rounded-full border border-accent/30 bg-glass px-3 py-1 text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-accent self-start sm:self-auto">
                         Manufacturer
                       </span>
                     </div>
 
                     {m.address && (
-                      <div className="mt-6 space-y-3 text-sm text-muted-foreground">
-                        <div className="flex items-start gap-3">
-                          <span className="mt-0.5 text-accent">📍</span>
-                          <span>{m.address}</span>
+                      <div className="mt-4 sm:mt-6 space-y-3 text-xs sm:text-sm text-muted-foreground">
+                        <div className="flex items-start gap-2 sm:gap-3">
+                          <span className="mt-0.5 text-accent text-sm">📍</span>
+                          <span className="break-words">{m.address}</span>
                         </div>
                       </div>
                     )}
                   </motion.div>
+                ))
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="min-w-[280px] sm:min-w-[320px] flex-1 flex items-center justify-center min-h-[300px] sm:min-h-[400px] rounded-2xl border border-border bg-card/40 p-8 sm:p-12 text-center shadow-deep backdrop-blur-sm"
+                >
+                  <div>
+                    <div className="mb-4 sm:mb-6 text-4xl sm:text-6xl">🍵</div>
+                    <h3 className="font-display text-2xl sm:text-3xl text-foreground">
+                      Tea Manufacturers Coming Soon
+                    </h3>
+                    <p className="mt-3 sm:mt-4 max-w-md text-xs sm:text-sm text-muted-foreground">
+                      We're currently onboarding premium tea manufacturers. Check back soon for our
+                      curated selection of tea partners.
+                    </p>
+                    <div className="mt-6 sm:mt-8 flex items-center justify-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 sm:px-6 py-2 sm:py-3">
+                      <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-accent animate-pulse" />
+                      <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-accent">
+                        Onboarding
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+
+            {/* Mobile scroll indicators */}
+            <div className="mt-3 sm:mt-4 flex justify-center gap-1 md:hidden">
+              {activeTab === "salt" &&
+                currentManufacturers.map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-1.5 w-1.5 rounded-full transition-colors"
+                    style={{
+                      backgroundColor: i === 0 ? "hsl(var(--accent))" : "hsl(var(--accent) / 0.3)",
+                    }}
+                  />
                 ))}
-              </div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="flex min-h-[400px] flex-col items-center justify-center rounded-2xl border border-border bg-card/40 p-12 text-center shadow-deep backdrop-blur-sm"
-              >
-                <div className="mb-6 text-6xl">🍵</div>
-                <h3 className="font-display text-3xl text-foreground">
-                  Tea Manufacturers Coming Soon
-                </h3>
-                <p className="mt-4 max-w-md text-muted-foreground">
-                  We're currently onboarding premium tea manufacturers. Check back soon for our
-                  curated selection of tea partners.
-                </p>
-                <div className="mt-8 flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-6 py-3">
-                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                  <span className="text-xs uppercase tracking-[0.2em] text-accent">Onboarding</span>
-                </div>
-              </motion.div>
-            )}
+            </div>
           </div>
         </motion.div>
       </div>
