@@ -1,14 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Nav } from "@/components/Nav";
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
 import heroSalt from "@/assets/hero-abstract.jpg";
 import factory from "@/assets/factory-new.jpg";
-import product from "@/assets/product-debut.jpg";
+import product from "@/assets/salt.png";
 import saltPans from "@/assets/campus-aerial.jpg";
 import logo from "@/assets/ainore-logo-clean.png";
+import teaImage from "@/assets/tea.jpeg";
+
+// Add this after your imports
+const PRODUCTS = {
+  salt: {
+    id: "salt",
+    name: "Premium Salt",
+    image: product,
+    purity: "99.8%",
+    additives: "0",
+    certification: "FSSAI",
+    description:
+      "Produced under controlled environment, finished in laminar airflow, and sealed in a vessel built to outlast its contents. Retail-grade. Export-ready. Quietly perfect.",
+    specs: [
+      { k: "99.8%", v: "Purity" },
+      { k: "0", v: "Additives" },
+      { k: "FSSAI", v: "Certified" },
+    ],
+    badge: "New",
+    status: "Available",
+  },
+  tea: {
+    id: "tea",
+    name: "Premium Tea",
+    image: teaImage,
+    purity: "Single Origin",
+    additives: "0",
+    certification: "FSSAI",
+    description:
+      "Finest tea leaves sourced from premium estates, processed with precision to preserve aroma and flavor. Packaged fresh for retail and HORECA.",
+    specs: [
+      { k: "Single Origin", v: "Source" },
+      { k: "0", v: "Additives" },
+      { k: "FSSAI", v: "Certified" },
+    ],
+    badge: "New",
+    status: "Available",
+  },
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -230,18 +269,11 @@ function Manufacturers() {
     ],
     tea: [
       {
-        name: "Coming Soon",
-        gst: "",
-        address: "Tea manufacturers will be listed here",
-        phone: "",
-        email: "",
-        state: "",
-        products: ["Premium Tea", "Specialty Tea"],
-        invoice: "",
-        date: "",
-        specs: {
-          Status: "Coming Soon",
-        },
+        name: "DEVON PLANTATION & INDUSTRIES LIMITED",
+        gst: "29AAACD7869H1Z6",
+        fssai: "11218310000004",
+        address: "DEVON ESTATES PB NO 14, KOPPA, 577126, CHIKMAGALUR DIST",
+        batch_no: "DE1",
       },
     ],
   };
@@ -337,10 +369,7 @@ function Manufacturers() {
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Tea
-              <span className="ml-2 rounded-full bg-accent/20 px-2 py-0.5 text-[8px] uppercase tracking-[0.15em] text-accent">
-                Soon
-              </span>
+              Tea ({manufacturers.tea.length})
             </button>
           </div>
 
@@ -393,92 +422,65 @@ function Manufacturers() {
               className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 md:pb-6 scrollbar-hide"
               style={{ scrollSnapType: "x mandatory" }}
             >
-              {activeTab === "salt" ? (
-                currentManufacturers.map((m, i) => (
-                  <motion.div
-                    key={m.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: i * 0.05 }}
-                    whileHover={{ y: -8 }}
-                    className="min-w-[280px] max-w-[320px] sm:min-w-[320px] sm:max-w-[380px] flex-shrink-0 rounded-2xl border border-border bg-card/40 p-5 sm:p-8 shadow-deep backdrop-blur-sm transition-all hover:border-accent/40 hover:shadow-glow md:min-w-[380px] md:p-10"
-                    style={{ scrollSnapAlign: "start" }}
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-0">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-display text-lg sm:text-2xl text-foreground break-words">
-                          {m.name}
-                        </h3>
-                        {m.gst && (
-                          <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
-                            GST: {m.gst}
-                          </p>
-                        )}
-                        {m.fssai && (
-                          <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
-                            FSSAI: {m.fssai}
-                          </p>
-                        )}
-                        {m.batch_no && (
-                          <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
-                            BATCH NO: {m.batch_no}
-                          </p>
-                        )}
-                      </div>
-                      <span className="shrink-0 rounded-full border border-accent/30 bg-glass px-3 py-1 text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-accent self-start sm:self-auto">
-                        Manufacturer
-                      </span>
-                    </div>
-
-                    {m.address && (
-                      <div className="mt-4 sm:mt-6 space-y-3 text-xs sm:text-sm text-muted-foreground">
-                        <div className="flex items-start gap-2 sm:gap-3">
-                          <span className="mt-0.5 text-accent text-sm">📍</span>
-                          <span className="break-words">{m.address}</span>
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                ))
-              ) : (
+              {currentManufacturers.map((m, i) => (
                 <motion.div
+                  key={m.name}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="min-w-[280px] sm:min-w-[320px] flex-1 flex items-center justify-center min-h-[300px] sm:min-h-[400px] rounded-2xl border border-border bg-card/40 p-8 sm:p-12 text-center shadow-deep backdrop-blur-sm"
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  whileHover={{ y: -8 }}
+                  className="min-w-[280px] max-w-[320px] sm:min-w-[320px] sm:max-w-[380px] flex-shrink-0 rounded-2xl border border-border bg-card/40 p-5 sm:p-8 shadow-deep backdrop-blur-sm transition-all hover:border-accent/40 hover:shadow-glow md:min-w-[380px] md:p-10"
+                  style={{ scrollSnapAlign: "start" }}
                 >
-                  <div>
-                    <div className="mb-4 sm:mb-6 text-4xl sm:text-6xl">🍵</div>
-                    <h3 className="font-display text-2xl sm:text-3xl text-foreground">
-                      Tea Manufacturers Coming Soon
-                    </h3>
-                    <p className="mt-3 sm:mt-4 max-w-md text-xs sm:text-sm text-muted-foreground">
-                      We're currently onboarding premium tea manufacturers. Check back soon for our
-                      curated selection of tea partners.
-                    </p>
-                    <div className="mt-6 sm:mt-8 flex items-center justify-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 sm:px-6 py-2 sm:py-3">
-                      <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-accent animate-pulse" />
-                      <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-accent">
-                        Onboarding
-                      </span>
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-0">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-lg sm:text-2xl text-foreground break-words">
+                        {m.name}
+                      </h3>
+                      {m.gst && (
+                        <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
+                          GST: {m.gst}
+                        </p>
+                      )}
+                      {m.fssai && (
+                        <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
+                          FSSAI: {m.fssai}
+                        </p>
+                      )}
+                      {m.batch_no && (
+                        <p className="mt-1 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent break-words">
+                          BATCH NO: {m.batch_no}
+                        </p>
+                      )}
                     </div>
+                    <span className="shrink-0 rounded-full border border-accent/30 bg-glass px-3 py-1 text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-accent self-start sm:self-auto">
+                      Manufacturer
+                    </span>
                   </div>
+
+                  {m.address && (
+                    <div className="mt-4 sm:mt-6 space-y-3 text-xs sm:text-sm text-muted-foreground">
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <span className="mt-0.5 text-accent text-sm">📍</span>
+                        <span className="break-words">{m.address}</span>
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
-              )}
+              ))}
             </div>
 
             {/* Mobile scroll indicators */}
             <div className="mt-3 sm:mt-4 flex justify-center gap-1 md:hidden">
-              {activeTab === "salt" &&
-                currentManufacturers.map((_, i) => (
-                  <div
-                    key={i}
-                    className="h-1.5 w-1.5 rounded-full transition-colors"
-                    style={{
-                      backgroundColor: i === 0 ? "hsl(var(--accent))" : "hsl(var(--accent) / 0.3)",
-                    }}
-                  />
-                ))}
+              {currentManufacturers.map((_, i) => (
+                <div
+                  key={i}
+                  className="h-1.5 w-1.5 rounded-full transition-colors"
+                  style={{
+                    backgroundColor: i === 0 ? "hsl(var(--accent))" : "hsl(var(--accent) / 0.3)",
+                  }}
+                />
+              ))}
             </div>
           </div>
         </motion.div>
@@ -488,32 +490,79 @@ function Manufacturers() {
 }
 
 function Product() {
+  const [activeProduct, setActiveProduct] = useState<"salt" | "tea">("salt");
+  const [isPaused, setIsPaused] = useState(false);
+  const product = PRODUCTS[activeProduct];
+
+  // Get all product IDs for navigation
+  const productIds = Object.keys(PRODUCTS) as Array<keyof typeof PRODUCTS>;
+  const currentIndex = productIds.indexOf(activeProduct);
+
+  // Auto-rotate products every 4 seconds
+  useEffect(() => {
+    if (isPaused) return; // Don't auto-rotate if paused
+
+    const interval = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % productIds.length;
+      setActiveProduct(productIds[nextIndex]);
+    }, 4000); // Change product every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [activeProduct, isPaused, productIds.length]);
+
+  const handlePrev = () => {
+    setIsPaused(true); // Pause on user interaction
+    const newIndex = currentIndex === 0 ? productIds.length - 1 : currentIndex - 1;
+    setActiveProduct(productIds[newIndex]);
+    // Resume after 5 seconds of inactivity
+    setTimeout(() => setIsPaused(false), 5000);
+  };
+
+  const handleNext = () => {
+    setIsPaused(true); // Pause on user interaction
+    const newIndex = currentIndex === productIds.length - 1 ? 0 : currentIndex + 1;
+    setActiveProduct(productIds[newIndex]);
+    // Resume after 5 seconds of inactivity
+    setTimeout(() => setIsPaused(false), 5000);
+  };
+
+  const handleDotClick = (id: "salt" | "tea") => {
+    setIsPaused(true); // Pause on user interaction
+    setActiveProduct(id);
+    // Resume after 5 seconds of inactivity
+    setTimeout(() => setIsPaused(false), 5000);
+  };
+
   return (
     <section id="product" className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 md:py-48">
       <div className="absolute inset-0 bg-aurora opacity-40" />
       <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-center lg:gap-16">
         {/* Text content */}
-        <Reveal direction="left" distance={300}>
+        <Reveal direction="left" distance={300} key={`text-${activeProduct}`}>
           <div>
-            <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-accent">
-              02 — Debut Product
-            </p>
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-[10px] uppercase tracking-[0.4em] text-accent">
+                02 — Debut Product
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="rounded-full bg-accent/20 px-3 py-1 text-[8px] uppercase tracking-[0.15em] text-accent">
+                  {product.status}
+                </span>
+              </div>
+            </div>
+
             <h2 className="font-display text-4xl font-light leading-[1] tracking-tight sm:text-5xl md:text-7xl">
-              The first,
+              {product.name}
               <br />
               <span className="italic text-foil">redrawn.</span>
             </h2>
+
             <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Produced under controlled environment, finished in laminar airflow, and sealed in a
-              vessel built to outlast its contents. Retail-grade. Export-ready. Quietly perfect.
+              {product.description}
             </p>
 
             <dl className="mt-12 grid grid-cols-3 gap-3 border-t border-border pt-8 sm:gap-6">
-              {[
-                { k: "99.8%", v: "Purity" },
-                { k: "0", v: "Additives" },
-                { k: "FSSAI", v: "Certified" },
-              ].map((s, i) => (
+              {product.specs.map((s, i) => (
                 <Reveal key={s.v} direction="up" distance={60} delay={i + 1}>
                   <div>
                     <dt className="font-display text-xl text-foreground sm:text-3xl md:text-4xl">
@@ -545,21 +594,45 @@ function Product() {
                 </a>
               </Reveal>
             </div>
+
+            {/* Product Navigation Dots */}
+            <div className="mt-8 flex justify-start gap-2">
+              {productIds.map((id) => (
+                <button
+                  key={id}
+                  onClick={() => handleDotClick(id)}
+                  className={`h-2 rounded-full transition-all ${
+                    activeProduct === id
+                      ? "w-8 bg-accent"
+                      : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                  }`}
+                  aria-label={`View ${PRODUCTS[id].name}`}
+                />
+              ))}
+            </div>
           </div>
         </Reveal>
 
-        {/* Image with scale animation like the manufacturing image */}
+        {/* Image with navigation arrows */}
         <Reveal direction="scale" delay={2} className="mt-8 lg:mt-0">
-          <motion.div
-            whileHover={{ scale: 1.03, rotate: -1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          <div
             className="relative mx-auto aspect-[3/4] w-full max-w-sm sm:max-w-md md:max-w-lg"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
             <div className="absolute -inset-10 rounded-full bg-accent/20 blur-3xl" />
-            <div className="relative h-full w-full overflow-hidden rounded-3xl border border-border shadow-deep">
+
+            {/* Product Image */}
+            <motion.div
+              key={activeProduct}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="relative h-full w-full overflow-hidden rounded-3xl border border-border shadow-deep"
+            >
               <img
-                src={product}
-                alt="AINORE debut product in matte black vessel"
+                src={product.image}
+                alt={`AINORE ${product.name}`}
                 className="h-full w-full object-cover"
                 loading="lazy"
                 width={1280}
@@ -568,17 +641,76 @@ function Product() {
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
                 <div>
-                  <p className="font-display text-xl text-foreground sm:text-2xl">N°01</p>
+                  <p className="font-display text-xl text-foreground sm:text-2xl">
+                    {product.id === "salt" ? "N°01" : "N°02"}
+                  </p>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                    The Debut
+                    {product.name}
                   </p>
                 </div>
                 <span className="rounded-full border border-accent/40 bg-glass px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-accent">
-                  New
+                  {product.badge}
                 </span>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* Navigation Arrows */}
+            {productIds.length > 1 && (
+              <>
+                <button
+                  onClick={handlePrev}
+                  className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm border border-accent/30 text-accent hover:bg-accent/20 hover:border-accent transition-all shadow-lg opacity-70 hover:opacity-100"
+                  aria-label="Previous product"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm border border-accent/30 text-accent hover:bg-accent/20 hover:border-accent transition-all shadow-lg opacity-70 hover:opacity-100"
+                  aria-label="Next product"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
+              </>
+            )}
+
+            {/* Progress bar */}
+            {!isPaused && (
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 4, ease: "linear" }}
+                className="absolute -bottom-2 left-0 right-0 h-0.5 rounded-full bg-accent/30 overflow-hidden"
+                style={{ transformOrigin: "left" }}
+              >
+                <div className="h-full w-full bg-accent" />
+              </motion.div>
+            )}
+          </div>
         </Reveal>
       </div>
     </section>
@@ -823,10 +955,10 @@ function Contact() {
             <div>
               <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">Email</p>
               <a
-                href="mailto:granityinternational@gmail.com"
+                href="mailto:grainityinternational@gmail.com"
                 className="text-sm text-foreground hover:text-accent"
               >
-                granityinternational@gmail.com
+                grainityinternational@gmail.com
               </a>
             </div>
             <div>
@@ -905,8 +1037,8 @@ function Footer() {
           <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-accent">Contact</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <a href="mailto:granityinternational@gmail.com" className="hover:text-foreground">
-                granityinternational@gmail.com
+              <a href="mailto:grainityinternational@gmail.com" className="hover:text-foreground">
+                grainityinternational@gmail.com
               </a>
             </li>
             <li>Export · Wholesale · Co-pack</li>
