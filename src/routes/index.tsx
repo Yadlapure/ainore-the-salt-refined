@@ -10,12 +10,12 @@ import product from "@/assets/salt.png";
 import saltPans from "@/assets/campus-aerial.jpg";
 import logo from "@/assets/ainore-logo-clean.png";
 import teaImage from "@/assets/tea.jpeg";
+import powderSaltImage from "@/assets/powder-salt.jpeg";
 
-// Add this after your imports
 const PRODUCTS = {
-  salt: {
-    id: "salt",
-    name: "Premium Salt",
+  crystalSalt: {
+    id: "crystalSalt",
+    name: "Crystal Salt",
     image: product,
     purity: "99.8%",
     additives: "0",
@@ -24,6 +24,23 @@ const PRODUCTS = {
       "Produced under controlled environment, finished in laminar airflow, and sealed in a vessel built to outlast its contents. Retail-grade. Export-ready. Quietly perfect.",
     specs: [
       { k: "99.8%", v: "Purity" },
+      { k: "0", v: "Additives" },
+      { k: "FSSAI", v: "Certified" },
+    ],
+    badge: "New",
+    status: "Available",
+  },
+  powderSalt: {
+    id: "powderSalt",
+    name: "Powder Salt",
+    image: powderSaltImage,
+    purity: "99.9%",
+    additives: "0",
+    certification: "FSSAI",
+    description:
+      "Finely ground premium salt, perfect for industrial and food processing applications. Consistent particle size, high purity, and superior flowability.",
+    specs: [
+      { k: "99.9%", v: "Purity" },
       { k: "0", v: "Additives" },
       { k: "FSSAI", v: "Certified" },
     ],
@@ -490,7 +507,7 @@ function Manufacturers() {
 }
 
 function Product() {
-  const [activeProduct, setActiveProduct] = useState<"salt" | "tea">("salt");
+  const [activeProduct, setActiveProduct] = useState<keyof typeof PRODUCTS>("crystalSalt");
   const [isPaused, setIsPaused] = useState(false);
   const product = PRODUCTS[activeProduct];
 
@@ -526,11 +543,17 @@ function Product() {
     setTimeout(() => setIsPaused(false), 5000);
   };
 
-  const handleDotClick = (id: "salt" | "tea") => {
+  const handleDotClick = (id: keyof typeof PRODUCTS) => {
     setIsPaused(true); // Pause on user interaction
     setActiveProduct(id);
     // Resume after 5 seconds of inactivity
     setTimeout(() => setIsPaused(false), 5000);
+  };
+
+  // Get product number
+  const getProductNumber = (id: string) => {
+    const index = productIds.indexOf(id as keyof typeof PRODUCTS);
+    return `N°${String(index + 1).padStart(2, "0")}`;
   };
 
   return (
@@ -642,7 +665,7 @@ function Product() {
               <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
                 <div>
                   <p className="font-display text-xl text-foreground sm:text-2xl">
-                    {product.id === "salt" ? "N°01" : "N°02"}
+                    {getProductNumber(product.id)}
                   </p>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     {product.name}
@@ -716,6 +739,7 @@ function Product() {
     </section>
   );
 }
+
 
 function Manufacturing() {
   const pillars = [
